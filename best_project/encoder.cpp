@@ -1,6 +1,6 @@
 #include"Header.h"
 
-string encoder(string data)
+String encoder(String data)
 {
 	return "";
 }

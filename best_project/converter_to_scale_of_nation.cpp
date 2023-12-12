@@ -1,6 +1,6 @@
 #include"Header.h"
 
-string converter_to_scale_of_nation(string value, int operation_id)
+String converter_to_scale_of_nation(String value, int operation_id)
 {
 	return "";
 }

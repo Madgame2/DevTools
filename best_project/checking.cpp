@@ -1,6 +1,6 @@
 #include"Header.h"
 
-bool checking(int module_ID, string data)
+bool checking(int module_ID, String data)
 {
 	return false;
 }

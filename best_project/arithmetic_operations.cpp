@@ -1,6 +1,6 @@
 #include"Header.h"
 
-string arithmetic_operations(string operation)
+String arithmetic_operations(String operation)
 {
 	return "";
 }

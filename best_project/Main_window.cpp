@@ -1,8 +1,11 @@
 #include"Header.h"
+#define Win_width 1200
+#define Win_height 800
 
 int main(int argc,char*argv[]) {
-    RenderWindow main_window(VideoMode(1200, 800), L"new_project");
 
+    RenderWindow main_window(VideoMode(Win_width, Win_height), "new_project", Style::Close| Style::Titlebar);
+    
     main_window.setVerticalSyncEnabled(true);
 
     while (main_window.isOpen())
