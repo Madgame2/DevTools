@@ -44,7 +44,16 @@
     <ClInclude Include="Header.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\test_area_for_sfml\test_area_for_sfml\menu_bar.h">
+    <ClInclude Include="Radio_button.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="text_label.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_bar.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

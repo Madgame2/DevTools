@@ -1,7 +1,7 @@
 #pragma once
-#define shadow_present 1/15
-#include<SFML/Graphics.hpp>
+#define shadow_present 1/14
 #include<iostream>
+#include<SFML/Graphics.hpp>
 
 using namespace sf;
 using namespace std;
@@ -19,7 +19,7 @@ class Menu
 
 			button_sprite.setTexture(button_texture);
 
-			font.loadFromFile("Kadwa-Bold.ttf");
+			font.loadFromFile("arialmt.ttf");
 			button_text.setFont(font);
 			button_text.setFillColor(Color(128, 128, 128));
 
@@ -51,8 +51,6 @@ class Menu
 				WIDTH / button_texture.getSize().x,
 				HEIGHT / button_texture.getSize().y
 			);
-
-			cout << button_texture.getSize().x * button_sprite.getScale().x;
 		}
 
 		float get_x_position() {
@@ -71,7 +69,8 @@ class Menu
 			return HEIGHT;
 		}
 
-		void set_text(String str) {
+		void set_text(string str) {
+			
 			button_text.setString(str);
 		}
 
@@ -145,6 +144,10 @@ class Menu
 
 		bool get_active() {
 			return is_active;
+		}
+
+		Text* get_text() {
+			return &button_text;
 		}
 
 	private:
@@ -283,11 +286,17 @@ public:
 	}
 
 	void set_button_text_settings(int size, float  off_set) {
+		buttons[0].get_text()->setString(L"Конвертер символов");
+		buttons[1].get_text()->setString(L"Перевод в различные системы");
+		buttons[2].get_text()->setString(L"Конвертор битов,байтов,килобайтов");
+		buttons[3].get_text()->setString(L"Арифметические операции");
+		buttons[4].get_text()->setString(L"Перевод в машинны код");
+		buttons[5].set_text("ChatGPT");
+		
 		for (int i = 0; i < 6; i++)
 		{
 			buttons[i].set_text_size(size);
 			buttons[i].set_text_position(buttons[i].get_x_position() + buttons[i].get_button_width() + off_set,buttons[i].get_y_position()+buttons[i].get_button_height()/2);
-			buttons[i].set_text("Button ");
 			buttons[i].move_text(-1 * WIDTH + visible_part, 0);
 			set_button_zone_settings(i);
 		}

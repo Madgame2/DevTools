@@ -163,8 +163,11 @@
     <ClCompile Include="Main_window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\test_area_for_sfml\test_area_for_sfml\menu_bar.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="menu_bar.h" />
+    <ClInclude Include="Radio_button.h" />
+    <ClInclude Include="text_label.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
