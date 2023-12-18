@@ -189,6 +189,10 @@ public:
 		}
 	}
 
+	void set_font_size(float size) {
+		text_label.setCharacterSize(size);
+	}
+
 private:
 
 	void clear_string()

@@ -11,6 +11,8 @@ int page_id = 0;
 
 Sprite background_sprite;
 Texture background;
+Font font;
+
 /*-----------encoder-------------*/
 Radio_button encoder_radio_button(4);
 
@@ -24,7 +26,7 @@ textLabel convertor_OCT(400, 330, 400, 50, "defoult_text");
 textLabel convertor_DEC(400, 440, 400, 50, "defoult_text");
 textLabel convertor_HEX(400, 550, 400, 50, "defoult_text");
 
-Font font;
+
 Text BIN_text(L"ƒ‚ÓË˜Ì‡ˇ", font, 30);
 Text OCT_text(L"¬ÓÒ¸ÏÂË˜Ì‡ˇ", font, 30);
 Text DEC_text(L"ƒÂÒˇÚË˜Ì‡ˇ", font, 30);
@@ -39,6 +41,32 @@ Button HEX_copy_button("img\\copy.png", "img\\copyActive.png");
 
 Button encode_scale_of_nation_reset_button("img\\ArrowClockwise.png","img\\ArrowClockwiseActive.png");
 
+/*-----------convertor to scale of nation-------------*/
+textLabel math_sytem_lable_BIT(250,250,300,40,"");
+textLabel math_sytem_lable_BYTE(650, 250, 300, 40, "");
+textLabel math_sytem_lable_KBYTE(250, 350, 300, 40, "");
+textLabel math_sytem_lable_MBYTE(650, 350, 300, 40, "");
+textLabel math_sytem_lable_GBYTE(250, 450, 300, 40, "");
+textLabel math_sytem_lable_TBYTE(650, 450, 300, 40, "");
+
+Text BIT_text(L"¡ËÚ", font, 30);
+Text BYTE_text(L"¡‡ÈÚ", font, 30);
+Text KBYTE_text(L" ËÎÓ·‡ÈÚ", font, 30);
+Text MBYTE_text(L"ÃÂ„‡·‡ÈÚ", font, 30);
+Text GBYTE_text(L"√Ë„‡·‡ÈÚ", font, 30);
+Text TBYTE_text(L"“Â‡·‡ÈÚ", font, 30);
+
+Button   BIT_copy_button("img\\copy.png", "img\\copyActive.png");
+Button  BYTE_copy_button("img\\copy.png", "img\\copyActive.png");
+Button KBYTE_copy_button("img\\copy.png", "img\\copyActive.png");
+Button MBYTE_copy_button("img\\copy.png", "img\\copyActive.png");
+Button GBYTE_copy_button("img\\copy.png", "img\\copyActive.png");
+Button TBYTE_copy_button("img\\copy.png", "img\\copyActive.png");
+
+Button math_system_convert_button("img\\ConvertorCHAR.png", "img\\convertorActive.png");
+
+Button math_system_RESET_button("img\\ArrowClockwise.png", "img\\ArrowClockwiseActive.png");
+
 void build_main_page(int page_id) {
 
     font.loadFromFile("arialmt.ttf");
@@ -47,7 +75,7 @@ void build_main_page(int page_id) {
     {   
     case 0:
        
-       cout<< background.loadFromFile("img\\Rectangle 1.png");
+       background.loadFromFile("img\\Rectangle 1.png");
        background.setSmooth(true);
 
        background_sprite.setTexture(background);
@@ -117,7 +145,66 @@ void build_main_page(int page_id) {
         convertor_HEX.clear_all();
 
         break;
+    case 2:
+        background.loadFromFile("img\\back_bytes.png");
+        background.setSmooth(true);
 
+        background_sprite.setTexture(background);
+        background_sprite.setOrigin(0, 0);
+        background_sprite.setPosition(0, 0);
+        background_sprite.setScale(
+            Win_width / background_sprite.getTexture()->getSize().x,
+            Win_height / background_sprite.getTexture()->getSize().y
+        );
+
+        math_sytem_lable_BIT.set_font_size(25);
+        math_sytem_lable_BYTE.set_font_size(25);
+        math_sytem_lable_KBYTE.set_font_size(25);
+        math_sytem_lable_MBYTE.set_font_size(25);
+        math_sytem_lable_GBYTE.set_font_size(25);
+        math_sytem_lable_TBYTE.set_font_size(25);
+
+        BIT_text.setFillColor(Color(128, 128, 128));
+        BYTE_text.setFillColor(Color(128, 128, 128));
+        KBYTE_text.setFillColor(Color(128, 128, 128));
+        MBYTE_text.setFillColor(Color(128, 128, 128));
+        GBYTE_text.setFillColor(Color(128, 128, 128));
+        TBYTE_text.setFillColor(Color(128, 128, 128));
+
+        BIT_text.setPosition(360, 210);
+        BYTE_text.setPosition(760, 210);
+        KBYTE_text.setPosition(330, 310);
+        MBYTE_text.setPosition(730, 310);
+        GBYTE_text.setPosition(330, 410);
+        TBYTE_text.setPosition(730, 410);
+
+        BIT_copy_button.set_size(55, 35);
+        BYTE_copy_button.set_size(55, 35);
+        KBYTE_copy_button.set_size(55, 35);
+        MBYTE_copy_button.set_size(55, 35);
+        GBYTE_copy_button.set_size(55, 35);
+        TBYTE_copy_button.set_size(55, 35);
+
+        BIT_copy_button.set_position(560,252);
+        BYTE_copy_button.set_position(960, 252);
+        KBYTE_copy_button.set_position(560, 352);
+        MBYTE_copy_button.set_position(960, 352);
+        GBYTE_copy_button.set_position(560, 452);
+        TBYTE_copy_button.set_position(960, 452);
+
+        math_system_convert_button.set_size(200, 55);
+        math_system_convert_button.set_position(480, 580);
+
+        math_system_RESET_button.set_size(50, 50);
+        math_system_RESET_button.set_position(690, 582);
+
+        math_sytem_lable_BIT.clear_all();
+        math_sytem_lable_BYTE.clear_all();
+        math_sytem_lable_KBYTE.clear_all();
+        math_sytem_lable_MBYTE.clear_all();
+        math_sytem_lable_GBYTE.clear_all();
+        math_sytem_lable_TBYTE.clear_all();
+        break;
     default:
         break;
     }
@@ -156,6 +243,34 @@ void render_main_page(int page_id, RenderWindow *Window) {
 
         encode_scale_of_nation_reset_button.render(Window);
         break;
+    case 2:
+        Window->draw(background_sprite);
+
+        math_sytem_lable_BIT.render(Window);
+        math_sytem_lable_BYTE.render(Window);
+        math_sytem_lable_KBYTE.render(Window);
+        math_sytem_lable_MBYTE.render(Window);
+        math_sytem_lable_GBYTE.render(Window);
+        math_sytem_lable_TBYTE.render(Window);
+
+        Window->draw(BIT_text);
+        Window->draw(BYTE_text);
+        Window->draw(KBYTE_text);
+        Window->draw(MBYTE_text);
+        Window->draw(GBYTE_text);
+        Window->draw(TBYTE_text);
+
+        BIT_copy_button.render(Window);
+        BYTE_copy_button.render(Window);
+        KBYTE_copy_button.render(Window);
+        MBYTE_copy_button.render(Window);
+        GBYTE_copy_button.render(Window);
+        TBYTE_copy_button.render(Window);
+
+        math_system_convert_button.render(Window);
+
+        math_system_RESET_button.render(Window);
+        break;
     default:
         break;
     }
@@ -183,6 +298,73 @@ void scale_of_nation_logic() {
         convertor_DEC.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 3));
     }
     else {      //ERROR
+        cout << "------------error messege----------" << endl;
+    }
+}
+
+void conver_to_math_system_logic() {
+    if (math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //BIT
+        !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
+        !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
+    {
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 2));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 3));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 4));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 5));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 6));
+    }
+    else if (!math_sytem_lable_BIT.has_data() && math_sytem_lable_BYTE.has_data() &&       //BYTE
+             !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
+             !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
+    {
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 1));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 3));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 4));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 5));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 6));
+    }
+    else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //KBYTE
+              math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
+             !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
+    {
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 1));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 2));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 4));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 5));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 6));
+    }
+    else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //MBYTE
+             !math_sytem_lable_KBYTE.has_data() &&  math_sytem_lable_MBYTE.has_data() &&
+             !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data())
+    {
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 1));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 2));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 3));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 5));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 6));
+    }
+    else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //GBYTE
+             !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
+              math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data())
+    {
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 1));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 2));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 3));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 4));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 6));
+    }
+    else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //TBYTE
+             !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
+             !math_sytem_lable_GBYTE.has_data() &&  math_sytem_lable_TBYTE.has_data())
+    {
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 1));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 2));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 3));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 4));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 5));
+    }
+    else
+    {    //ERROR
         cout << "------------error messege----------" << endl;
     }
 }
@@ -222,6 +404,8 @@ int main(int argc,char*argv[]) {
                 }
                 if (menu_bar.getButton(2)->is_hover(&main_window)) {
                     menu_bar.set_active(2);
+                    build_main_page(2);
+                    page_id = 2;
                 }
                 if (menu_bar.getButton(3)->is_hover(&main_window)) {
                     menu_bar.set_active(3);
@@ -338,17 +522,103 @@ int main(int argc,char*argv[]) {
                         HEX_copy_button.set_active();
                     }
                 }
+                else if (page_id == 2) {
+                /*------------------Õ¿∆¿“»≈ Õ¿ À≈…¡À ¡»“Œ¬, ¡¿…“Œ¬ “.ƒ---------------------*/
+                    if (math_sytem_lable_BIT.is_hover(&main_window)) {
+                        math_sytem_lable_BIT.set_active();
+                    }
+                    else {
+                        math_sytem_lable_BIT.set_disactive();
+                    }
+                    if (math_sytem_lable_BYTE.is_hover(&main_window)) {
+                        math_sytem_lable_BYTE.set_active();
+                    }
+                    else {
+                        math_sytem_lable_BYTE.set_disactive();
+                    }
+                    if (math_sytem_lable_KBYTE.is_hover(&main_window)) {
+                        math_sytem_lable_KBYTE.set_active();
+                    }
+                    else {
+                        math_sytem_lable_KBYTE.set_disactive();
+                    }
+                    if (math_sytem_lable_MBYTE.is_hover(&main_window)) {
+                        math_sytem_lable_MBYTE.set_active();
+                    }
+                    else {
+                        math_sytem_lable_MBYTE.set_disactive();
+                    }
+                    if (math_sytem_lable_GBYTE.is_hover(&main_window)) {
+                        math_sytem_lable_GBYTE.set_active();
+                    }
+                    else {
+                        math_sytem_lable_GBYTE.set_disactive();
+                    }
+                    if (math_sytem_lable_TBYTE.is_hover(&main_window)) {
+                        math_sytem_lable_TBYTE.set_active();
+                    }
+                    else {
+                        math_sytem_lable_TBYTE.set_disactive();
+                    }
+
+                    /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  Œœ»–Œ¬¿“‹---------------------*/
+                    if (BIT_copy_button.is_hover(&main_window)) {
+                        BIT_copy_button.set_active();
+                    }
+                    if (BYTE_copy_button.is_hover(&main_window)) {
+                        BYTE_copy_button.set_active();
+                    }
+                    if (KBYTE_copy_button.is_hover(&main_window)) {
+                        KBYTE_copy_button.set_active();
+                    }
+                    if (MBYTE_copy_button.is_hover(&main_window)) {
+                        MBYTE_copy_button.set_active();
+                    }
+                    if (GBYTE_copy_button.is_hover(&main_window)) {
+                        GBYTE_copy_button.set_active();
+                    }
+                    if (TBYTE_copy_button.is_hover(&main_window)) {
+                        TBYTE_copy_button.set_active();
+                    }
+
+                    /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  ŒÕ¬≈–“¿÷»»---------------------*/
+                    if (math_system_convert_button.is_hover(&main_window)) {
+                        math_system_convert_button.set_active();
+                        conver_to_math_system_logic();
+                    }
+
+                    /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ” —¡–Œ—¿---------------------*/
+                    if (math_system_RESET_button.is_hover(&main_window)) {
+                        math_system_RESET_button.set_active();
+                        math_sytem_lable_BIT.clear_all();
+                        math_sytem_lable_BYTE.clear_all();
+                        math_sytem_lable_KBYTE.clear_all();
+                        math_sytem_lable_MBYTE.clear_all();
+                        math_sytem_lable_GBYTE.clear_all();
+                        math_sytem_lable_TBYTE.clear_all();
+                    }
+                }
             }
             /*------------------«¿œ»—‹ ƒ¿ÕÕ€’ ¬ À≈…¡À  ŒÕ¬≈–“Œ–¿ —»Ã¬ŒÀŒ¬---------------------*/
             if (page_id == 0) {
                 encoder_enter_lable.writing_data(event);
                 encoder_exit_lable.swap_postion();
             }
+            /*------------------«¿œ»—‹ ƒ¿ÕÕ€’ ¬ À≈…¡À  ŒÕ¬≈–“Œ–¿ —»—“≈Ã —◊»—À≈Õ»ﬂ---------------------*/
             else if (page_id == 1) {
                 convertor_BIN.writing_data(event);
                 convertor_DEC.writing_data(event);
                 convertor_OCT.writing_data(event);
                 convertor_HEX.writing_data(event);
+            }
+            /*------------------«¿œ»—‹ ƒ¿ÕÕ€’ ¬ À≈…¡À ¡»“Œ¬ ¡¿…“Œ¬ » “.ƒ---------------------*/
+            else if (page_id == 2) {
+                math_sytem_lable_BIT.writing_data(event);
+                math_sytem_lable_BYTE.writing_data(event);
+                math_sytem_lable_KBYTE.writing_data(event);
+                math_sytem_lable_MBYTE.writing_data(event);
+                math_sytem_lable_GBYTE.writing_data(event);
+                math_sytem_lable_TBYTE.writing_data(event);
             }
         }
 

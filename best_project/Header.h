@@ -14,7 +14,15 @@ String encoder(String data, int operation_id); //кодировшик ASCII UTF-8 UTF-16..
 											   * 3- WIN-1251
 											   */
 
-String converter_to_mathematical_system(String data); //конвертор в биты байты  байты... 
+String converter_to_mathematical_system(String data, int operation_id); //конвертор в биты байты  байты... 
+																		/*
+																		* 1 - Ѕиты
+																		* 2 - Ѕайт
+																		* 3 -  Ѕайт
+																		* 4 - ћЅайт
+																		* 5 - √Ѕайт
+																		* 6 - “Ѕайт
+																		*/
 
 String converter_to_scale_of_nation(String value, int operation_id); //конвертор в системы счислени€
 																	/*1 - BIN(двоична€)

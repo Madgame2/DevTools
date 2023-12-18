@@ -59,11 +59,9 @@ class Radio_button
 
 
 			if (rect.contains(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y)) {
-				cout << "hover" << endl;
 				return true;
 			}
 			else {
-				cout << "hot_hover" << endl;
 				return false;
 			}
 		}
