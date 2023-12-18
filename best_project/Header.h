@@ -6,7 +6,13 @@
 
 using namespace sf;
 
-String encoder(String data); //кодировшик ASCII UTF-8 UTF-16...
+String encoder(String data, int operation_id); //кодировшик ASCII UTF-8 UTF-16...
+											   /*
+											   * 0- UTF-16
+											   * 1- UTF-8
+											   * 2- ASCII
+											   * 3- WIN-1251
+											   */
 
 String converter_to_mathematical_system(String data); //конвертор в биты байты  байты... 
 

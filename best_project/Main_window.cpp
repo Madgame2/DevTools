@@ -140,7 +140,7 @@ int main(int argc,char*argv[]) {
                     /*------------------ÍÀÆÀÒÈÅ ÍÀ ÊÍÎÏÊÓ ÊÎÍÂÅĞÒÀÖÈÈ---------------------*/
                     if (encoder_conver_button.is_hover(&main_window)) {
                         encoder_conver_button.set_active();
-                        encoder_exit_lable.set_data(encoder(encoder_enter_lable.get_data()));
+                        encoder_exit_lable.set_data(encoder(encoder_enter_lable.get_data(),encoder_radio_button.get_active_button()));
                     } 
                     else
                     {
@@ -159,6 +159,7 @@ int main(int argc,char*argv[]) {
             /*------------------ÇÀÏÈÑÜ ÄÀÍÍÛÕ Â ËÅÉÁË ÊÎÍÂÅĞÒÎĞÀ ÑÈÌÂÎËÎÂ---------------------*/
             if (page_id == 0) {
                 encoder_enter_lable.writing_data(event);
+                encoder_exit_lable.swap_postion();
             }
         }
 

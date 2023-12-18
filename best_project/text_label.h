@@ -135,28 +135,63 @@ public:
 
 	void set_data(String str) {
 		full_string = str;
+		while (text_label.getGlobalBounds().width + 40 >= WIDTH||full_string[right_position]!='\0')
+		{
+			right_position++;
+		}
+	}
+
+	void swap_postion() {
+		if (Keyboard::isKeyPressed(Keyboard::Left)) {
+			cout << "left" << endl;
+			if (global_position != 0) {
+				if (global_position == left_position) {
+					global_position--;
+					left_position--;
+				}
+				else
+				{
+					global_position--;
+				}
+			}
+			cout << "left - " << left_position << " right - " << right_position << " global_position - " << global_position << endl;
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Right)) {
+			cout << "right" << endl;
+
+			if (global_position < right_position) {
+				global_position++;
+			}
+			if (global_position == right_position && right_position != full_string.getSize()) {
+				global_position++;
+				right_position++;
+			}
+			cout << "left - " << left_position << " right - " << right_position << " global_position - " << global_position << endl;
+
+		}
 	}
 
 private:
 
 	void clear_string()
 	{
-		if (text_label.getGlobalBounds().width + 40 >= WIDTH) {
-			if (left_position == global_position) {
-				right_position--;
+		if (is_active) {
+			if (text_label.getGlobalBounds().width + 40 >= WIDTH) {
+				if (left_position == global_position) {
+					right_position--;
+
+				}
+				else if (right_position == global_position)
+				{
+					left_position++;
+				}
+				else
+				{
+					right_position--;
+				}
 
 			}
-			else if (right_position == global_position)
-			{
-				left_position++;
-			}
-			else
-			{
-				right_position--;
-			}
-
 		}
-
 	}
 
 	String Build_visible_string() {
