@@ -171,6 +171,24 @@ public:
 		}
 	}
 
+	void clear_all() {
+		full_string.clear();
+		visible_string.clear();
+		global_position = 0;
+		left_position = 0;
+		right_position = 0;
+	}
+
+	bool has_data() {
+		if (full_string[0] != '\0') {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 private:
 
 	void clear_string()

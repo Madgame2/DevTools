@@ -73,6 +73,9 @@ Button::Button(string path_to_static, string path_to_active)
 	static_button.loadFromFile(path_to_static);
 	active_button.loadFromFile(path_to_active);
 
+	static_button.setSmooth(true);
+	active_button.setSmooth(true);
+
 	set_disactive();
 }
 
