@@ -24,7 +24,7 @@ String converter_to_mathematical_system(String data, int operation_id); //конвер
 																		* 6 - ТБайт
 																		*/
 
-String converter_to_scale_of_nation(String value, int operation_id); //конвертор в системы счисления
+String converter_to_scale_of_nation(String value, int operation_id, int labelId); //конвертор в системы счисления
 																	/*1 - BIN(двоичная)
 																	  2 - OCT(восмеричная)
 																	  3 - DEC(десфтичная)

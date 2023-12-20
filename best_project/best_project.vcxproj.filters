@@ -56,5 +56,8 @@
     <ClInclude Include="menu_bar.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
