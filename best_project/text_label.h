@@ -135,9 +135,13 @@ public:
 
 	void set_data(String str) {
 		full_string = str;
-		while (text_label.getGlobalBounds().width + 40 >= WIDTH||full_string[right_position]!='\0')
+		right_position = str.getSize();
+		text_label.setString(full_string);
+		while (text_label.getGlobalBounds().width + 40 >= WIDTH)
 		{
-			right_position++;
+			right_position--;
+			visible_string = Build_visible_string();
+			text_label.setString(visible_string);
 		}
 	}
 
