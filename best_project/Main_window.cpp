@@ -279,23 +279,24 @@ void render_main_page(int page_id, RenderWindow *Window) {
 void scale_of_nation_logic() {
     if (convertor_BIN.has_data()&& !convertor_DEC.has_data()&& !convertor_OCT.has_data()&& !convertor_HEX.has_data()) {  // BIN
         convertor_OCT.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 2));
-        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 3));
-        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 4));
+        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 3));
+        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 4));
     }
-    else if (!convertor_BIN.has_data() && convertor_DEC.has_data() && !convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //OCT
-        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 1));
-        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 2));
-        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 4));
+
+    else if (!convertor_BIN.has_data() && !convertor_DEC.has_data() && convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //OCT
+        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 1));
+        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 3));
+        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 4));
     }
-    else if (!convertor_BIN.has_data() && !convertor_DEC.has_data() && convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //DEC
-        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 1));
-        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 3));
-        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 4));
+    else if (!convertor_BIN.has_data() && convertor_DEC.has_data() && !convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //DEC
+        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 1));
+        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 2));
+        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 4));
     }
     else if (!convertor_BIN.has_data() && !convertor_DEC.has_data() && !convertor_OCT.has_data() && convertor_HEX.has_data()) {  //HEX
-        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_BIN.get_data(), 1));
-        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 2));
-        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 3));
+        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 1));
+        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 2));
+        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 3));
     }
     else {      //ERROR
         cout << "------------error messege----------" << endl;
@@ -409,12 +410,18 @@ int main(int argc,char*argv[]) {
                 }
                 if (menu_bar.getButton(3)->is_hover(&main_window)) {
                     menu_bar.set_active(3);
+                    build_main_page(3);
+                    page_id = 3;
                 }
                 if (menu_bar.getButton(4)->is_hover(&main_window)) {
                     menu_bar.set_active(4);
+                    build_main_page(4);
+                    page_id = 4;
                 }
                 if (menu_bar.getButton(5)->is_hover(&main_window)) {
                     menu_bar.set_active(5);
+                    build_main_page(5);
+                    page_id = 5;
                 }
 
                 if (page_id == 0) {
