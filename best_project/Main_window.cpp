@@ -284,9 +284,9 @@ void scale_of_nation_logic() {
     }
 
     else if (!convertor_BIN.has_data() && !convertor_DEC.has_data() && convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //OCT
-        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 1, 1));
-        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 3, 3));
-        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 4, 4));
+        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 1, 2));
+        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 3, 2));
+        convertor_HEX.set_data(converter_to_scale_of_nation(convertor_OCT.get_data(), 4, 2));
     }
     else if (!convertor_BIN.has_data() && convertor_DEC.has_data() && !convertor_OCT.has_data() && !convertor_HEX.has_data()) {  //DEC
         convertor_BIN.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 1, 3));
@@ -294,9 +294,9 @@ void scale_of_nation_logic() {
         convertor_HEX.set_data(converter_to_scale_of_nation(convertor_DEC.get_data(), 4, 3));
     }
     else if (!convertor_BIN.has_data() && !convertor_DEC.has_data() && !convertor_OCT.has_data() && convertor_HEX.has_data()) {  //HEX
-        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 1, 1));
-        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 2, 2));
-        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 3, 3));
+        convertor_BIN.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 1, 4));
+        convertor_OCT.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 2, 4));
+        convertor_DEC.set_data(converter_to_scale_of_nation(convertor_HEX.get_data(), 3, 4));
     }
     else {      //ERROR
         cout << "------------error messege----------" << endl;

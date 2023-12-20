@@ -27,6 +27,13 @@ void initialiseVector(string wholePart, vector<int>& decNumbers, int size) {
 	}
 }
 
+void initialiseVectorHex(string wholePart, vector<int>& decNumbers, int size) {
+
+	for (int i = 0; i < size; i++) {
+		decNumbers.push_back(hexToIntNumbers[wholePart.substr(i, 1)]);
+	}
+}
+
 String intToDex(String value) {
 
 	string wholePart = value.toAnsiString();
@@ -339,11 +346,171 @@ String decToInt(String &value) {
 	return wholePart;
 }
 
+String octToInt(String& value) {
+
+	string wholePart = value.toAnsiString();
+	string fraction;
+	size_t dotPosition;
+	size_t stringSize;
+	int number = 0;
+	double fractionNumber = 0;
+	vector<int> decNumbers;
+
+	findPos(wholePart, fraction, dotPosition);
+
+	if (wholePart[0] == '-') {
+
+		wholePart.erase(0, 1);
+		stringSize = wholePart.size();
+
+		reverse(wholePart.begin(), wholePart.end());
+
+		initialiseVector(wholePart, decNumbers, (int)stringSize);
+		wholePart.clear();
+
+		for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+			number += (int)(decNumbers[i] * pow(8, i));
+		}
+
+		wholePart += "-";
+		wholePart += to_string(number);
+	}
+	else {
+
+		stringSize = wholePart.size();
+
+		reverse(wholePart.begin(), wholePart.end());
+
+		initialiseVector(wholePart, decNumbers, (int)stringSize);
+		wholePart.clear();
+
+		for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+			number += (int)(decNumbers[i] * pow(8, i));
+		}
+
+		wholePart += to_string(number);
+
+	}
+
+	decNumbers.clear();
+
+	if (fraction.empty() == false) {
+
+		fraction.erase(0, 2);
+		stringSize = fraction.size();
+
+		reverse(fraction.begin(), fraction.end());
+
+		initialiseVector(fraction, decNumbers, (int)stringSize);
+		fraction.clear();
+
+		for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
+
+			fractionNumber += decNumbers[i] * pow(8, j);
+		}
+
+		fraction += to_string(fractionNumber);
+		fraction.erase(0, 1);
+
+		wholePart = wholePart + fraction;
+	}
+
+	return wholePart;
+}
+
+String hexToInt(String& value) {
+
+	string wholePart = value.toAnsiString();
+	string fraction;
+	size_t dotPosition;
+	size_t stringSize;
+	int number = 0;
+	double fractionNumber = 0;
+	vector<int> decNumbers;
+
+	findPos(wholePart, fraction, dotPosition);
+
+	if (wholePart[0] == '-') {
+
+		wholePart.erase(0, 1);
+		stringSize = wholePart.size();
+
+		reverse(wholePart.begin(), wholePart.end());
+
+		initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
+		wholePart.clear();
+
+		for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+			number += (int)(decNumbers[i] * pow(16, i));
+		}
+
+		wholePart += "-";
+		wholePart += to_string(number);
+	}
+	else {
+
+		stringSize = wholePart.size();
+
+		reverse(wholePart.begin(), wholePart.end());
+
+		initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
+		wholePart.clear();
+
+		for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+			number += (int)(decNumbers[i] * pow(16, i));
+		}
+
+		wholePart += to_string(number);
+
+	}
+
+	decNumbers.clear();
+
+	if (fraction.empty() == false) {
+
+		fraction.erase(0, 2);
+		stringSize = fraction.size();
+
+		reverse(fraction.begin(), fraction.end());
+
+		initialiseVectorHex(fraction, decNumbers, (int)stringSize);
+		fraction.clear();
+
+		for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
+
+			fractionNumber += decNumbers[i] * pow(16, j);
+		}
+
+		fraction += to_string(fractionNumber);
+		fraction.erase(0, 1);
+
+		wholePart = wholePart + fraction;
+	}
+
+	return wholePart;
+}
+
 String converter_to_scale_of_nation(String value, int operation_id, int labelId)
 {	
-	if (labelId == 1) {
+	switch (labelId)
+	{
+	case 1:
 		value = decToInt(value);
+		break;
+	case 2:
+		value = octToInt(value);
+		break;
+	case 4:
+		value = hexToInt(value);
+		break;
+	default:
+		break;
 	}
+
 	switch (operation_id)
 	{
 	case 1:
