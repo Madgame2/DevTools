@@ -34,13 +34,13 @@ void initialiseVectorHex(string wholePart, vector<int>& decNumbers, int size) {
 	}
 }
 
-String intToDex(String value) {
+String intToBin(String value) {
 
 	string wholePart = value.toAnsiString();
 	string fraction;
 	size_t dotPosition;
-	int number;
-	double fractionNumber;
+	long long int number;
+	long double fractionNumber;
 	int occurasity; //число знаков
 
 	occurasity = 10;
@@ -49,7 +49,7 @@ String intToDex(String value) {
 
 	if (wholePart[0] == '-') {
 
-		number = stoi(wholePart);
+		number = stoll(wholePart);
 		wholePart.clear();
 
 		if (number != 0) {
@@ -72,7 +72,7 @@ String intToDex(String value) {
 	}
 	else {
 
-		number = stoi(wholePart);
+		number = stoll(wholePart);
 		wholePart.clear();
 
 		if (number != 0) {
@@ -93,7 +93,7 @@ String intToDex(String value) {
 
 	if (fraction.empty() == false) {
 
-		fractionNumber = stod(fraction);
+		fractionNumber = stold(fraction);
 		fraction.clear();
 
 		while (occurasity > 0 && fractionNumber != 0) {
@@ -120,8 +120,8 @@ String intToOct(String value) {
 	string wholePart = value.toAnsiString();
 	string fraction;
 	size_t dotPosition;
-	int number;
-	double fractionNumber;
+	long long int number;
+	long double fractionNumber;
 	int occurasity; //число знаков
 
 	occurasity = 10;
@@ -130,7 +130,7 @@ String intToOct(String value) {
 
 	if (wholePart[0] == '-') {
 
-		number = stoi(wholePart);
+		number = stoll(wholePart);
 		wholePart.clear();
 
 		if (number != 0) {
@@ -152,7 +152,7 @@ String intToOct(String value) {
 	}
 	else {
 
-		number = stoi(wholePart);
+		number = stoll(wholePart);
 		wholePart.clear();
 
 		if (number != 0) {
@@ -173,7 +173,7 @@ String intToOct(String value) {
 
 	if (fraction.empty() == false) {
 
-		fractionNumber = stod(fraction);
+		fractionNumber = stold(fraction);
 		fraction.clear();
 
 		while (fractionNumber != 0 && occurasity > 0) {
@@ -198,7 +198,7 @@ String intToHex(String value) {
 	string fraction;
 	size_t dotPosition;
 	long long int number;
-	double fractionNumber;
+	long double fractionNumber;
 	int occurasity; //число знаков
 
 	occurasity = 10;
@@ -252,7 +252,7 @@ String intToHex(String value) {
 
 	if (fraction.empty() == false) {
 
-		fractionNumber = stod(fraction);
+		fractionNumber = stold(fraction);
 		fraction.clear();
 
 		while (occurasity > 0) {
@@ -272,14 +272,14 @@ String intToHex(String value) {
 	return wholePart;
 }
 
-String decToInt(String &value) {
+String binToInt(String value) {
 
 	string wholePart = value.toAnsiString();
 	string fraction;
 	size_t dotPosition;
 	size_t stringSize;
-	int number = 0;
-	double fractionNumber = 0;
+	long long int number = 0;
+	long double fractionNumber = 0;
 	vector<int> decNumbers;
 
 	findPos(wholePart, fraction, dotPosition);
@@ -296,7 +296,7 @@ String decToInt(String &value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(2, i));
+			number += (long long int)(decNumbers[i] * pow(2, i));
 		}
 
 		wholePart += "-";
@@ -313,7 +313,7 @@ String decToInt(String &value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(2, i));
+			number += (long long int)(decNumbers[i] * pow(2, i));
 		}
 
 		wholePart += to_string(number);
@@ -346,14 +346,14 @@ String decToInt(String &value) {
 	return wholePart;
 }
 
-String octToInt(String& value) {
+String octToInt(String value) {
 
 	string wholePart = value.toAnsiString();
 	string fraction;
 	size_t dotPosition;
 	size_t stringSize;
-	int number = 0;
-	double fractionNumber = 0;
+	long long int number = 0;
+	long double fractionNumber = 0;
 	vector<int> decNumbers;
 
 	findPos(wholePart, fraction, dotPosition);
@@ -370,7 +370,7 @@ String octToInt(String& value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(8, i));
+			number += (long long int)(decNumbers[i] * pow(8, i));
 		}
 
 		wholePart += "-";
@@ -387,7 +387,7 @@ String octToInt(String& value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(8, i));
+			number += (long long int)(decNumbers[i] * pow(8, i));
 		}
 
 		wholePart += to_string(number);
@@ -420,14 +420,14 @@ String octToInt(String& value) {
 	return wholePart;
 }
 
-String hexToInt(String& value) {
+String hexToInt(String value) {
 
 	string wholePart = value.toAnsiString();
 	string fraction;
 	size_t dotPosition;
 	size_t stringSize;
-	int number = 0;
-	double fractionNumber = 0;
+	long long int number = 0;
+	long double fractionNumber = 0;
 	vector<int> decNumbers;
 
 	findPos(wholePart, fraction, dotPosition);
@@ -444,7 +444,7 @@ String hexToInt(String& value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(16, i));
+			number += (long long int)(decNumbers[i] * pow(16, i));
 		}
 
 		wholePart += "-";
@@ -461,7 +461,7 @@ String hexToInt(String& value) {
 
 		for (int i = (int)stringSize - 1; i >= 0; i--) {
 
-			number += (int)(decNumbers[i] * pow(16, i));
+			number += (long long int)(decNumbers[i] * pow(16, i));
 		}
 
 		wholePart += to_string(number);
@@ -494,12 +494,13 @@ String hexToInt(String& value) {
 	return wholePart;
 }
 
+
 String converter_to_scale_of_nation(String value, int operation_id, int labelId)
 {	
 	switch (labelId)
 	{
 	case 1:
-		value = decToInt(value);
+		value = binToInt(value);
 		break;
 	case 2:
 		value = octToInt(value);
@@ -514,7 +515,7 @@ String converter_to_scale_of_nation(String value, int operation_id, int labelId)
 	switch (operation_id)
 	{
 	case 1:
-		return intToDex(value);
+		return intToBin(value);
 		break;
 	case 2:
 		return intToOct(value);

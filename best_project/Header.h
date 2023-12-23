@@ -40,4 +40,10 @@ String arithmetic_operations(String operation); //арифметические операции с точк
 
 String convertor_to_machine_code(float value); //преобразует десятичное число в машинный код
 
+String intToBin(String value); //преобразует десятичное число в двоичное
+
+String intToHex(String value); //преобразует десятичное число в шестнадцатиричное
+
+String binToInt(String value); //преобразует двоичное число в десятичное
+
 bool checking(int module_ID, String data);

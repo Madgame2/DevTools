@@ -372,7 +372,7 @@ void conver_to_math_system_logic() {
 
 int main(int argc,char*argv[]) {
     
-    RenderWindow main_window(VideoMode(Win_width, Win_height), "new_project", Style::Close | Style::Titlebar);
+    RenderWindow main_window(VideoMode(Win_width, Win_height), "DevTools", Style::Close | Style::Titlebar);
 
     main_window.setVerticalSyncEnabled(true);
     build_main_page(0);
