@@ -77,6 +77,9 @@ Button::Button(string path_to_static, string path_to_active)
 	active_button.setSmooth(true);
 
 	set_disactive();
+
+	WIDTH = static_button.getSize().x;
+	HEIGHT = static_button.getSize().y;
 }
 
 Button::~Button()

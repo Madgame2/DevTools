@@ -67,6 +67,26 @@ Button math_system_convert_button("img\\ConvertorCHAR.png", "img\\convertorActiv
 
 Button math_system_RESET_button("img\\ArrowClockwise.png", "img\\ArrowClockwiseActive.png");
 
+/*-----------convertor to machine code-------------*/
+textLabel Dec_code    (240, 280, 300, 60, "");
+textLabel reverse_code(660, 280, 300, 60, "");
+textLabel Simple_code (240, 440, 300, 60, "");
+textLabel extra_code  (660, 440, 300, 60, "");
+
+Text dec_text(L"Äåñÿòè÷íûé",font,30);
+Text simple_text(L"Ïðÿìîé êîä", font, 30);
+Text reverse_text(L"Îáðàíûé êîä", font, 30);
+Text extra_text(L"Äîï. êîä", font, 30);
+
+Button copy_button_dec("img\\copy.png", "img\\copyActive.png");
+Button copy_button_simple("img\\copy.png", "img\\copyActive.png");
+Button copy_button_reverse("img\\copy.png", "img\\copyActive.png");
+Button copy_button_extra("img\\copy.png", "img\\copyActive.png");
+
+Button machine_code_convert_button("img\\ConvertorCHAR.png", "img\\convertorActive.png");
+
+Button machine_code_RESET_button("img\\ArrowClockwise.png", "img\\ArrowClockwiseActive.png");
+
 void build_main_page(int page_id) {
 
     font.loadFromFile("arialmt.ttf");
@@ -205,6 +225,50 @@ void build_main_page(int page_id) {
         math_sytem_lable_GBYTE.clear_all();
         math_sytem_lable_TBYTE.clear_all();
         break;
+
+    case 4:
+        background.loadFromFile("img\\back_code.png");
+        background.setSmooth(true);
+
+        background_sprite.setTexture(background);
+        background_sprite.setOrigin(0, 0);
+        background_sprite.setPosition(0, 0);
+        background_sprite.setScale(
+            Win_width / background_sprite.getTexture()->getSize().x,
+            Win_height / background_sprite.getTexture()->getSize().y
+        );
+
+        dec_text.setPosition(250, 240);
+        simple_text.setPosition(250,400);
+        reverse_text.setPosition(670,240);
+        extra_text.setPosition(670, 400);
+
+        dec_text.setFillColor(Color(128, 128, 128));
+        simple_text.setFillColor(Color(128, 128, 128));
+        reverse_text.setFillColor(Color(128, 128, 128));
+        extra_text.setFillColor(Color(128, 128, 128));
+
+        dec_text.setCharacterSize(30);
+        simple_text.setCharacterSize(30);
+        reverse_text.setCharacterSize(30);
+        extra_text.setCharacterSize(30);
+
+        copy_button_dec.set_position(545, 290);
+        copy_button_simple.set_position(545, 450);
+        copy_button_reverse.set_position(965, 290);
+        copy_button_extra.set_position(965, 450);
+
+        machine_code_convert_button.set_position(480, 560);
+        machine_code_convert_button.set_size(200, 55);
+
+        machine_code_RESET_button.set_position(690, 562.5);
+        machine_code_RESET_button.set_size(50, 50);
+
+        Dec_code.clear_all();
+        Simple_code.clear_all();
+        reverse_code.clear_all();
+        extra_code.clear_all();
+        break;
     default:
         break;
     }
@@ -270,6 +334,28 @@ void render_main_page(int page_id, RenderWindow *Window) {
         math_system_convert_button.render(Window);
 
         math_system_RESET_button.render(Window);
+        break;
+    case 4:
+        Window->draw(background_sprite);
+
+        Dec_code.render(Window);
+        Simple_code.render(Window);
+        reverse_code.render(Window);
+        extra_code.render(Window);
+
+        Window->draw(dec_text);
+        Window->draw(simple_text);
+        Window->draw(reverse_text);
+        Window->draw(extra_text);
+
+        copy_button_dec.render(Window);
+        copy_button_simple.render(Window);
+        copy_button_reverse.render(Window);
+        copy_button_extra.render(Window);
+
+        machine_code_convert_button.render(Window);
+
+        machine_code_RESET_button.render(Window);
         break;
     default:
         break;
@@ -368,6 +454,12 @@ void conver_to_math_system_logic() {
     {    //ERROR
         cout << "------------error messege----------" << endl;
     }
+}
+
+void convert_to_machine_code_logic() {
+    Simple_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 1));
+    reverse_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 2));
+    extra_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 3));
 }
 
 int main(int argc,char*argv[]) {
@@ -605,6 +697,67 @@ int main(int argc,char*argv[]) {
                         math_sytem_lable_TBYTE.clear_all();
                     }
                 }
+                else if (page_id == 4) {
+
+                /*------------------ÍÀÆÀÒÈÅ ÍÀ ËÅÉÁË ÏÊ/ÎÊ/ÄÊ---------------------*/
+                    if (Dec_code.is_hover(&main_window)) {
+                        Dec_code.set_active();
+                    }
+                    else
+                    {
+                        Dec_code.set_disactive();
+                    }
+                    if (Simple_code.is_hover(&main_window)) {
+                        Simple_code.set_active();
+                    }
+                    else
+                    {
+                        Simple_code.set_disactive();
+                    }
+                    if (reverse_code.is_hover(&main_window)) {
+                        reverse_code.set_active();
+                    }
+                    else
+                    {
+                        reverse_code.set_disactive();
+                    }
+                    if (extra_code.is_hover(&main_window)) {
+                        extra_code.set_active();
+                    }
+                    else
+                    {
+                        extra_code.set_disactive();
+                    }
+
+                    /*------------------ÍÀÆÀÒÈÅ ÍÀ ÊÍÎÏÊÓ COPY---------------------*/
+                    if (copy_button_dec.is_hover(&main_window)) {
+                        copy_button_dec.set_active();
+                    }
+                    if (copy_button_simple.is_hover(&main_window)) {
+                        copy_button_simple.set_active();
+                    }
+                    if (copy_button_reverse.is_hover(&main_window)) {
+                        copy_button_reverse.set_active();
+                    }
+                    if (copy_button_extra.is_hover(&main_window)) {
+                        copy_button_extra.set_active();
+                    }
+
+                    /*------------------ÍÀÆÀÒÈÅ ÍÀ ÊÍÎÏÊÓ ÊÎÍÂÅÐÒÀÖÈÈ---------------------*/
+                    if (machine_code_convert_button.is_hover(&main_window)) {
+                        machine_code_convert_button.set_active();
+                        convert_to_machine_code_logic();
+                    }
+
+                    /*------------------ÍÀÆÀÒÈÅ ÍÀ ÊÍÎÏÊÓ RESET---------------------*/
+                    if (machine_code_RESET_button.is_hover(&main_window)) {
+                        machine_code_RESET_button.set_active();
+                        Dec_code.clear_all();
+                        Simple_code.clear_all();
+                        reverse_code.clear_all();
+                        extra_code.clear_all();
+                    }
+                }
             }
             /*------------------ÇÀÏÈÑÜ ÄÀÍÍÛÕ Â ËÅÉÁË ÊÎÍÂÅÐÒÎÐÀ ÑÈÌÂÎËÎÂ---------------------*/
             if (page_id == 0) {
@@ -626,6 +779,9 @@ int main(int argc,char*argv[]) {
                 math_sytem_lable_MBYTE.writing_data(event);
                 math_sytem_lable_GBYTE.writing_data(event);
                 math_sytem_lable_TBYTE.writing_data(event);
+            }
+            else if (page_id == 4) {
+                Dec_code.writing_data(event);
             }
         }
 

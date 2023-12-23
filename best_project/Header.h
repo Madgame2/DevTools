@@ -38,7 +38,12 @@ void binary_logic(int operation_ID,String label_input); //связуюшее звенно между
 
 String arithmetic_operations(String operation); //арифметические операции с точки зрения микропроцессора/микроконтролера
 
-String convertor_to_machine_code(float value); //преобразует десятичное число в машинный код
+String convertor_to_machine_code(String data, int operation_id); //преобразует десятичное число в машинный код
+																 /*
+																  * 1 - ПК
+																  * 2 - ОК
+																  * 3 - ДК
+																 */
 
 String intToBin(String value); //преобразует десятичное число в двоичное
 
