@@ -89,7 +89,7 @@ String convertor_to_machine_code(String data, int operation_id)
 			return PrintNegativeNumber(sigh, num);
 		}
 		else {
-			num.erase(0, 1);
+			
 			InsertZeros(num);
 			return PrintPositiveNumber(sigh, num);
 		}
@@ -105,7 +105,7 @@ String convertor_to_machine_code(String data, int operation_id)
 			return PrintNegativeNumber(sigh, num);
 		}
 		else {//если положительное
-			num.erase(0, 1);
+			
 			//вставляем нули
 			InsertZeros(num);
 			//выводим число
@@ -124,7 +124,7 @@ String convertor_to_machine_code(String data, int operation_id)
 
 		}
 		else {//если положительное
-			num.erase(0, 1);
+			
 			//вставка нулей
 			InsertZeros(num);
 			//вывод числа
