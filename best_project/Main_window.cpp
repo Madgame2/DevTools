@@ -394,61 +394,61 @@ void conver_to_math_system_logic() {
         !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
         !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
     {
-        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 2));
-        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 3));
-        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 4));
-        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 5));
-        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 6));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 2, 1));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 3, 1));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 4, 1));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 5, 1));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BIT.get_data(), 6, 1));
     }
     else if (!math_sytem_lable_BIT.has_data() && math_sytem_lable_BYTE.has_data() &&       //BYTE
              !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
              !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
     {
-        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 1));
-        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 3));
-        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 4));
-        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 5));
-        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 6));
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 1, 2));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 3, 2));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 4, 2));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 5, 2));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_BYTE.get_data(), 6, 2));
     }
     else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //KBYTE
               math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
              !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data()) 
     {
-        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 1));
-        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 2));
-        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 4));
-        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 5));
-        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 6));
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 1, 3));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 2, 3));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 4, 3));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 5, 3));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_KBYTE.get_data(), 6, 3));
     }
     else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //MBYTE
              !math_sytem_lable_KBYTE.has_data() &&  math_sytem_lable_MBYTE.has_data() &&
              !math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data())
     {
-        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 1));
-        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 2));
-        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 3));
-        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 5));
-        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 6));
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 1, 4));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 2, 4));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 3, 4));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 5, 4));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_MBYTE.get_data(), 6, 4));
     }
     else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //GBYTE
              !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
               math_sytem_lable_GBYTE.has_data() && !math_sytem_lable_TBYTE.has_data())
     {
-        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 1));
-        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 2));
-        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 3));
-        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 4));
-        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 6));
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 1, 5));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 2, 5));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 3, 5));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 4, 5));
+        math_sytem_lable_TBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_GBYTE.get_data(), 6, 5));
     }
     else if (!math_sytem_lable_BIT.has_data() && !math_sytem_lable_BYTE.has_data() &&       //TBYTE
              !math_sytem_lable_KBYTE.has_data() && !math_sytem_lable_MBYTE.has_data() &&
              !math_sytem_lable_GBYTE.has_data() &&  math_sytem_lable_TBYTE.has_data())
     {
-        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 1));
-        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 2));
-        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 3));
-        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 4));
-        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 5));
+        math_sytem_lable_BIT.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 1, 6));
+        math_sytem_lable_BYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 2, 6));
+        math_sytem_lable_KBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 3, 6));
+        math_sytem_lable_MBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 4, 6));
+        math_sytem_lable_GBYTE.set_data(converter_to_mathematical_system(math_sytem_lable_TBYTE.get_data(), 5, 6));
     }
     else
     {    //ERROR

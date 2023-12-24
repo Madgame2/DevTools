@@ -14,7 +14,7 @@ String encoder(String data, int operation_id); //кодировшик ASCII UTF-8 UTF-16..
 											   * 3- WIN-1251
 											   */
 
-String converter_to_mathematical_system(String data, int operation_id); //конвертор в биты байты  байты... 
+String converter_to_mathematical_system(String data, int operation_id, int labelId); //конвертор в биты байты  байты... 
 																		/*
 																		* 1 - Ѕиты
 																		* 2 - Ѕайт
