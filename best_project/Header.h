@@ -57,3 +57,4 @@ bool checking(int module_ID, String data); /* modeule_ID - id проверяемого модул
 											* 3 - converter_to_scale_of_nation
 											* 4 - arithmetic_operations
 											* 5 - convertor_to_machine_code
+											*/
