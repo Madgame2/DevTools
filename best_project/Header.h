@@ -51,4 +51,9 @@ String intToHex(String value); //преобразует десятичное число в шестнадцатирично
 
 String binToInt(String value); //преобразует двоичное число в десятичное
 
-bool checking(int module_ID, String data);
+bool checking(int module_ID, String data); /* modeule_ID - id проверяемого модуля
+											* 1 - encode
+											* 2 - converter_to_mathematical_system
+											* 3 - converter_to_scale_of_nation
+											* 4 - arithmetic_operations
+											* 5 - convertor_to_machine_code
