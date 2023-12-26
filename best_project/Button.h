@@ -39,21 +39,33 @@ public:
 	}
 
 	void set_active() {
+
+		is_active = true;
 		button_sprite.setTexture(active_button);
 		timer.restart();
 	}
 
 	void set_disactive() {
+		is_active = false;
 		button_sprite.setTexture(static_button);
 	}
 	
 	void render(RenderWindow* window) {
-
-		if (timer.getElapsedTime().asMilliseconds() > 100) {
-			set_disactive();
+		if (!switch_mode) {
+			if (timer.getElapsedTime().asMilliseconds() > 100) {
+				set_disactive();
+			}
 		}
 
 		window->draw(button_sprite);
+	}
+
+	void set_swictch_mode(bool is_active) {
+		switch_mode = is_active;
+	}
+
+	bool isActive() {
+		return is_active;
 	}
 
 private:
@@ -64,6 +76,9 @@ private:
 
 	float WIDTH, HEIGHT;
 	float x, y;
+
+	bool is_active = false;
+	bool switch_mode = false;
 
 	Clock timer;
 };

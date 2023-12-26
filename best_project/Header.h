@@ -1,6 +1,7 @@
 #pragma once
 #include<String>
 #include<SFML/Graphics.hpp>
+#include<iostream>
 
 
 
@@ -36,7 +37,13 @@ void binary_logic(int operation_ID,String label_input); //связуюшее звенно между
 									 * 2 - convertor_to_machine_code(приобразовать в машинный код)
 									 */
 
-String arithmetic_operations(String operation); //арифметические операции с точки зрения микропроцессора/микроконтролера
+String arithmetic_operations(String count_1,String count_2,int operation_id); //арифметические операции с точки зрения микропроцессора/микроконтролера
+																			  /*
+																			   * 1 - плюс
+																			   * 2 - минус
+																			   * 3 - умнож
+																			   * 4 - делить
+																			   */
 
 String convertor_to_machine_code(String data, int operation_id); //преобразует десятичное число в машинный код
 																 /*

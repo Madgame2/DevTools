@@ -87,6 +87,24 @@ Button machine_code_convert_button("img\\ConvertorCHAR.png", "img\\convertorActi
 
 Button machine_code_RESET_button("img\\ArrowClockwise.png", "img\\ArrowClockwiseActive.png");
 
+/*-----------convertor to machine code-------------*/
+
+textLabel first_label_atithm_operations(200, 280, 300, 60," ");
+textLabel second_label_arithm_operations(200, 400, 300, 60, " ");
+textLabel result_lable_arithm_operaations(700, 340, 300, 60, " ");
+
+Button plus_button("img\\BtnPlus.png","img\\BtnPlusActive.png");
+Button minus_button("img\\BtnMINUS.png", "img\\BtnMinusActive.png");
+Button multiplication_button("img\\BtnUmnoz.png", "img\\BtnActiveUmnoz.png");
+Button division_button("img\\BtnDel.png", "img\\btnActiveDel.png");
+
+Button convert_button_arithmetic("img\\Button.png", "img\\ArithmetiqActive.png");
+Button RESET_button_arithmetic("img\\ArrowClockwise.png", "img\\ArrowClockwiseActive.png");
+
+Text first_lable_arithmetic(L"First", font, 15);
+Text second_lable_arithmetic(L"Second", font, 15);
+Text result_lable_arithmetic(L"Result", font, 15);
+
 void build_main_page(int page_id) {
 
     font.loadFromFile("arialmt.ttf");
@@ -226,6 +244,52 @@ void build_main_page(int page_id) {
         math_sytem_lable_TBYTE.clear_all();
         break;
 
+    case 3:
+        background.loadFromFile("img\\back_arithm.png");
+        background.setSmooth(true);
+
+        background_sprite.setTexture(background);
+        background_sprite.setOrigin(0, 0);
+        background_sprite.setPosition(0, 0);
+        background_sprite.setScale(
+            Win_width / background_sprite.getTexture()->getSize().x,
+            Win_height / background_sprite.getTexture()->getSize().y
+        );
+
+        plus_button.set_position(550,250);
+        minus_button.set_position(550,320);
+        multiplication_button.set_position(550,390);
+        division_button.set_position(550,460);
+
+        plus_button.set_swictch_mode(true);
+        minus_button.set_swictch_mode(true);
+        multiplication_button.set_swictch_mode(true);
+        division_button.set_swictch_mode(true);
+
+        plus_button.set_disactive();
+        minus_button.set_disactive();
+        multiplication_button.set_disactive();
+        division_button.set_disactive();
+
+        convert_button_arithmetic.set_position(445, 580);
+        convert_button_arithmetic.set_size(265, 70);
+
+        RESET_button_arithmetic.set_position(720, 585);
+        RESET_button_arithmetic.set_size(60, 60);
+
+        first_lable_arithmetic.setFillColor(Color(128, 128, 128));
+        second_lable_arithmetic.setFillColor(Color(128, 128, 128));
+        result_lable_arithmetic.setFillColor(Color(128, 128, 128));
+
+        first_lable_arithmetic.setPosition(210,260);
+        second_lable_arithmetic.setPosition(210,380);
+        result_lable_arithmetic.setPosition(710,320);
+
+        first_label_atithm_operations.clear_all();
+        second_label_arithm_operations.clear_all();
+        result_lable_arithm_operaations.clear_all();
+        break;
+
     case 4:
         background.loadFromFile("img\\back_code.png");
         background.setSmooth(true);
@@ -334,6 +398,27 @@ void render_main_page(int page_id, RenderWindow *Window) {
         math_system_convert_button.render(Window);
 
         math_system_RESET_button.render(Window);
+
+        break;
+    case 3:
+        Window->draw(background_sprite);
+
+        first_label_atithm_operations.render(Window);
+        second_label_arithm_operations.render(Window);
+        result_lable_arithm_operaations.render(Window);
+        
+        plus_button.render(Window);
+        minus_button.render(Window);
+        multiplication_button.render(Window);
+        division_button.render(Window);
+
+        convert_button_arithmetic.render(Window);
+        RESET_button_arithmetic.render(Window);
+
+
+        Window->draw(first_lable_arithmetic);
+        Window->draw(second_lable_arithmetic);
+        Window->draw(result_lable_arithmetic);
         break;
     case 4:
         Window->draw(background_sprite);
@@ -460,6 +545,21 @@ void convert_to_machine_code_logic() {
     Simple_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 1));
     reverse_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 2));
     extra_code.set_data(convertor_to_machine_code(Dec_code.get_data(), 3));
+}
+
+void arithmetic_logic() {
+    if (plus_button.isActive()) {
+        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 1));
+    }
+    else if (minus_button.isActive()) {
+        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 2));
+    }
+    else if (multiplication_button.isActive()) {
+        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 3));
+    }
+    else if (division_button.isActive()) {
+        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 4));
+    }
 }
 
 int main(int argc,char*argv[]) {
@@ -697,6 +797,66 @@ int main(int argc,char*argv[]) {
                         math_sytem_lable_TBYTE.clear_all();
                     }
                 }
+                else if (page_id == 3) 
+                {
+                    if (first_label_atithm_operations.is_hover(&main_window)) {
+                        first_label_atithm_operations.set_active();
+                    }
+                    else {
+                        first_label_atithm_operations.set_disactive();
+                    }
+                    if (second_label_arithm_operations.is_hover(&main_window)) {
+                        second_label_arithm_operations.set_active();
+                    }
+                    else {
+                        second_label_arithm_operations.set_disactive();
+                    }
+                    if (result_lable_arithm_operaations.is_hover(&main_window)) {
+                        result_lable_arithm_operaations.set_active();
+                    }
+                    else {
+                        result_lable_arithm_operaations.set_disactive();
+                    }
+
+                    if (plus_button.is_hover(&main_window)) {
+                        plus_button.set_active();
+                        minus_button.set_disactive();
+                        multiplication_button.set_disactive();
+                        division_button.set_disactive();
+                    }
+                    else if (minus_button.is_hover(&main_window)) {
+                        plus_button.set_disactive();
+                        minus_button.set_active();
+                        multiplication_button.set_disactive();
+                        division_button.set_disactive();
+                    }
+                    else if (multiplication_button.is_hover(&main_window)) {
+                        plus_button.set_disactive();
+                        minus_button.set_disactive();
+                        multiplication_button.set_active();
+                        division_button.set_disactive();
+                    }
+                    else if (division_button.is_hover(&main_window)) {
+                        plus_button.set_disactive();
+                        minus_button.set_disactive();
+                        multiplication_button.set_disactive();
+                        division_button.set_active();
+                    }
+
+                    if (convert_button_arithmetic.is_hover(&main_window)) {
+                        convert_button_arithmetic.set_active();
+
+                        arithmetic_logic();
+                    }
+
+                    if (RESET_button_arithmetic.is_hover(&main_window)) {
+                        RESET_button_arithmetic.set_active();
+
+                        first_label_atithm_operations.clear_all();
+                        second_label_arithm_operations.clear_all();
+                        result_lable_arithm_operaations.clear_all();
+                    }
+                }
                 else if (page_id == 4) {
 
                 /*------------------Õ¿∆¿“»≈ Õ¿ À≈…¡À œ /Œ /ƒ ---------------------*/
@@ -779,6 +939,11 @@ int main(int argc,char*argv[]) {
                 math_sytem_lable_MBYTE.writing_data(event);
                 math_sytem_lable_GBYTE.writing_data(event);
                 math_sytem_lable_TBYTE.writing_data(event);
+            }
+            else if (page_id == 3) {
+                first_label_atithm_operations.writing_data(event);
+                second_label_arithm_operations.writing_data(event);
+                result_lable_arithm_operaations.swap_postion();
             }
             else if (page_id == 4) {
                 Dec_code.writing_data(event);
