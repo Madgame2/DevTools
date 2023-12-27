@@ -363,7 +363,7 @@ void render_main_page(int page_id, RenderWindow *Window) {
         Window->draw(HEX_text);
 
         convertor_scale_of_nation_button.render(Window);
-
+  
         BIN_copy_button.render(Window);
         OCT_copy_button.render(Window);
         DEC_copy_button.render(Window);

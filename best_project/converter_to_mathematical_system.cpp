@@ -80,53 +80,71 @@ String convertToTerabyte(long double data) {
 String converter_to_mathematical_system(String data, int operation_id, int labelId)
 {	
 	string bitString = data.toAnsiString();
-	long double bit;
+	long double bit{};
+	bool check = true;
+	char symbol;
 
-	switch (labelId)
-	{
-	case 1:
-		bit = stold(bitString);
-		break;
-	case 2:
-		bit = stold(bitString) * 8;
-		break;
-	case 3:
-		bit = (stold(bitString) / pow(2, -10)) * 8;
-		break;
-	case 4:
-		bit = (stold(bitString) / pow(2, -20)) * 8;
-		break;
-	case 5:
-		bit = (stold(bitString) / pow(2, -30)) * 8;
-		break;
-	case 6:
-		bit = (stold(bitString) / pow(2, -40)) * 8;
-		break;
-	default:
-		break;
+	for (int i = 0; i < bitString.length(); i++) {
+
+		symbol = bitString[i];
+
+		if ((int)symbol > 40 || (int)symbol < 29) {
+			check = false;
+			break;
+		}
 	}
 
-	switch (operation_id)
-	{
-	case 1:
-		return to_string(bit);
-		break;
-	case 2:
-		return convertToByte(bit);
-		break;
-	case 3:
-		return convertToKilobyte(bit);
-		break;
-	case 4:
-		return convertToMegabyte(bit);
-		break;
-	case 5:
-		return convertToGigabyte(bit);
-		break;
-	case 6:
-		return convertToTerabyte(bit);
-		break;
-	default:
-		break;
+	if (check == true) {
+
+		switch (labelId)
+		{
+		case 1:
+			bit = stold(bitString);
+			break;
+		case 2:
+			bit = stold(bitString) * 8;
+			break;
+		case 3:
+			bit = (stold(bitString) / pow(2, -10)) * 8;
+			break;
+		case 4:
+			bit = (stold(bitString) / pow(2, -20)) * 8;
+			break;
+		case 5:
+			bit = (stold(bitString) / pow(2, -30)) * 8;
+			break;
+		case 6:
+			bit = (stold(bitString) / pow(2, -40)) * 8;
+			break;
+		default:
+			break;
+		}
+
+		switch (operation_id)
+		{
+		case 1:
+			return to_string(bit);
+			break;
+		case 2:
+			return convertToByte(bit);
+			break;
+		case 3:
+			return convertToKilobyte(bit);
+			break;
+		case 4:
+			return convertToMegabyte(bit);
+			break;
+		case 5:
+			return convertToGigabyte(bit);
+			break;
+		case 6:
+			return convertToTerabyte(bit);
+			break;
+		default:
+			break;
+		}
+	}
+	else {
+		return "Eror";
 	}
 }

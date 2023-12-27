@@ -51,22 +51,53 @@ String getResult(String count_1, String count_2, int operation_id) {
 }
 
 String arithmetic_operations(String count_1, String count_2, int operation_id)
-{
-	switch (operation_id)
-	{
-	case 1:
-		return getResult(count_1, count_2, 1);
-		break;
-	case 2:
-		return getResult(count_1, count_2, 2);
-		break;
-	case 3:
-		return getResult(count_1, count_2, 3);
-		break;
-	case 4:
-		return getResult(count_1, count_2, 4);
-		break;
-	default:
-		break;
+{   
+	bool check = true;
+	string checkingString1 = count_1.toAnsiString();
+	string checkingString2 = count_2.toAnsiString();
+	char symbol;
+
+	for (int i = 0; i < checkingString1.length(); i++) {
+
+		symbol = checkingString1[i];
+
+		if ((int)symbol > 40 || (int)symbol < 29) {
+			check = false;
+			break;
+		}
+	}
+
+	for (int i = 0; i < checkingString2.length(); i++) {
+
+		symbol = checkingString2[i];
+
+		if ((int)symbol > 40 || (int)symbol < 29) {
+			check = false;
+			break;
+		}
+	}
+
+	if (check == true) {
+
+		switch (operation_id)
+		{
+		case 1:
+			return getResult(count_1, count_2, 1);
+			break;
+		case 2:
+			return getResult(count_1, count_2, 2);
+			break;
+		case 3:
+			return getResult(count_1, count_2, 3);
+			break;
+		case 4:
+			return getResult(count_1, count_2, 4);
+			break;
+		default:
+			break;
+		}
+	}
+	else {
+		return "Eror";
 	}
 }

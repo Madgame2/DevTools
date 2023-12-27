@@ -83,13 +83,20 @@ String encodeUtf8(String data) {
 
 String encodeAscii(String data) {
 
-	string simbols = data.toAnsiString();
+	locale loc("Russian");
+	string simbols = data.toAnsiString(loc);
 	char codeOfSimbol;
 	string HexCodeOfSimbol, result;
 
 	for (int i = 0; i < simbols.length(); i++) {
 
 		codeOfSimbol = simbols[i];
+
+		if ((int)codeOfSimbol > 127 || (int)codeOfSimbol < 0) {
+			result = "Eror";
+			break;
+		}
+
 		HexCodeOfSimbol += to_string((int)codeOfSimbol);
 		result += intToHex(HexCodeOfSimbol) + " ";
 		HexCodeOfSimbol.clear();
@@ -108,6 +115,12 @@ String encodeWin1251(String data) {
 	for (int i = 0; i < simbols.length(); i++) {
 
 		codeOfSimbol = simbols[i];
+
+		if ((int)codeOfSimbol > 256) {
+			result = "Eror";
+			break;
+		}
+
 		HexCodeOfSimbol += to_string((int)codeOfSimbol);
 		result += intToHex(HexCodeOfSimbol) + " ";
 		HexCodeOfSimbol.clear();
