@@ -208,6 +208,8 @@ public:
 		symbols_limit = size;
 	}
 
+
+
 private:
 
 	void clear_string()

@@ -580,6 +580,34 @@ void arithmetic_logic() {
     }
 }
 
+void copy(const sf::String& text)
+{   
+    HWND hwnd = GetDesktopWindow();
+
+    OpenClipboard(0);
+
+    EmptyClipboard();
+
+    size_t textLength = text.getSize();
+    size_t bufferSize = (textLength + 1) * sizeof(wchar_t);
+
+    HGLOBAL hMem = GlobalAlloc(GMEM_MOVEABLE, bufferSize);
+
+    if (hMem != NULL) {
+        wchar_t* buffer = static_cast<wchar_t*>(GlobalLock(hMem));
+        if (buffer != NULL) {
+            memcpy(buffer, text.toWideString().c_str(), bufferSize);
+
+            buffer[textLength] = L'\0';
+
+            GlobalUnlock(hMem);
+
+            SetClipboardData(CF_UNICODETEXT, hMem);
+        }
+    }
+    CloseClipboard();
+}
+
 int main(int argc,char*argv[]) {
     
     RenderWindow main_window(VideoMode(Win_width, Win_height), "DevTools", Style::Close | Style::Titlebar);
@@ -728,15 +756,23 @@ int main(int argc,char*argv[]) {
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  Œœ»–Œ¬¿“‹---------------------*/
                     if (BIN_copy_button.is_hover(&main_window)) {
                         BIN_copy_button.set_active();
+                        
+                        copy(convertor_BIN.get_data());
                     }
                     if (OCT_copy_button.is_hover(&main_window)) {
                         OCT_copy_button.set_active();
+
+                        copy(convertor_OCT.get_data());
                     }
                     if (DEC_copy_button.is_hover(&main_window)) {
                         DEC_copy_button.set_active();
+
+                        copy(convertor_DEC.get_data());
                     }
                     if (HEX_copy_button.is_hover(&main_window)) {
                         HEX_copy_button.set_active();
+
+                        copy(convertor_HEX.get_data());
                     }
                 }
                 else if (page_id == 2) {
@@ -781,21 +817,33 @@ int main(int argc,char*argv[]) {
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  Œœ»–Œ¬¿“‹---------------------*/
                     if (BIT_copy_button.is_hover(&main_window)) {
                         BIT_copy_button.set_active();
+
+                        copy(math_sytem_lable_BIT.get_data());
                     }
                     if (BYTE_copy_button.is_hover(&main_window)) {
                         BYTE_copy_button.set_active();
+
+                        copy(math_sytem_lable_BYTE.get_data());
                     }
                     if (KBYTE_copy_button.is_hover(&main_window)) {
                         KBYTE_copy_button.set_active();
+
+                        copy(math_sytem_lable_KBYTE.get_data());
                     }
                     if (MBYTE_copy_button.is_hover(&main_window)) {
                         MBYTE_copy_button.set_active();
+
+                        copy(math_sytem_lable_MBYTE.get_data());
                     }
                     if (GBYTE_copy_button.is_hover(&main_window)) {
                         GBYTE_copy_button.set_active();
+
+                        copy(math_sytem_lable_GBYTE.get_data());
                     }
                     if (TBYTE_copy_button.is_hover(&main_window)) {
                         TBYTE_copy_button.set_active();
+
+                        copy(math_sytem_lable_TBYTE.get_data());
                     }
 
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  ŒÕ¬≈–“¿÷»»---------------------*/
@@ -910,15 +958,23 @@ int main(int argc,char*argv[]) {
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ” COPY---------------------*/
                     if (copy_button_dec.is_hover(&main_window)) {
                         copy_button_dec.set_active();
+
+                        copy(Dec_code.get_data());
                     }
                     if (copy_button_simple.is_hover(&main_window)) {
                         copy_button_simple.set_active();
+
+                        copy(Simple_code.get_data());
                     }
                     if (copy_button_reverse.is_hover(&main_window)) {
                         copy_button_reverse.set_active();
+
+                        copy(reverse_code.get_data());
                     }
                     if (copy_button_extra.is_hover(&main_window)) {
                         copy_button_extra.set_active();
+
+                        copy(extra_code.get_data());
                     }
 
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  ŒÕ¬≈–“¿÷»»---------------------*/
