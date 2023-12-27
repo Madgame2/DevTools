@@ -6,7 +6,7 @@
 using namespace std;
 
 void findPos(string &wholePart, string& fraction, size_t& dotPosition) {
-
+	  
 	dotPosition = wholePart.find('.');
 
 	if (dotPosition == -1) {
@@ -47,72 +47,80 @@ String intToBin(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		number = stoll(wholePart);
-		wholePart.clear();
+		if (wholePart[0] == '-') {
 
-		if (number != 0) {
+			number = stoll(wholePart);
+			wholePart.clear();
 
-			number *= -1;
+			if (number != 0) {
 
-			while (number > 0) {
+				number *= -1;
 
-				wholePart += to_string(number % 2);
-				number /= 2;
-			}
+				while (number > 0) {
 
-			wholePart += '-';
-			reverse(wholePart.begin(), wholePart.end());
-		}
-		else {
+					wholePart += to_string(number % 2);
+					number /= 2;
+				}
 
-			wholePart.insert(0, "-0");
-		}
-	}
-	else {
-
-		number = stoll(wholePart);
-		wholePart.clear();
-
-		if (number != 0) {
-
-			while (number > 0) {
-
-				wholePart += to_string(number % 2);
-				number /= 2;
-			}
-
-			reverse(wholePart.begin(), wholePart.end());
-		}
-		else {
-
-			wholePart = '0';
-		}
-	}
-
-	if (fraction.empty() == false) {
-
-		fractionNumber = stold(fraction);
-		fraction.clear();
-
-		while (occurasity > 0 && fractionNumber != 0) {
-			fractionNumber *= 2;
-
-			if (fractionNumber >= 1) {
-				fraction += '1';
-				fractionNumber -= 1;
+				wholePart += '-';
+				reverse(wholePart.begin(), wholePart.end());
 			}
 			else {
-				fraction += '0';
-			}
 
-			occurasity--;
+				wholePart.insert(0, "-0");
+			}
+		}
+		else {
+
+			number = stoll(wholePart);
+			wholePart.clear();
+
+			if (number != 0) {
+
+				while (number > 0) {
+
+					wholePart += to_string(number % 2);
+					number /= 2;
+				}
+
+				reverse(wholePart.begin(), wholePart.end());
+			}
+			else {
+
+				wholePart = '0';
+			}
 		}
 
-		wholePart = wholePart + '.' + fraction;
+		if (fraction.empty() == false) {
+
+			fractionNumber = stold(fraction);
+			fraction.clear();
+
+			while (occurasity > 0 && fractionNumber != 0) {
+				fractionNumber *= 2;
+
+				if (fractionNumber >= 1) {
+					fraction += '1';
+					fractionNumber -= 1;
+				}
+				else {
+					fraction += '0';
+				}
+
+				occurasity--;
+			}
+
+			wholePart = wholePart + '.' + fraction;
+		}
+		return wholePart;
 	}
-	return wholePart;
+	catch(...){
+
+		wholePart = "Eror";
+		return wholePart;
+	}
 }
 
 String intToOct(String value) {
@@ -128,68 +136,76 @@ String intToOct(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		number = stoll(wholePart);
-		wholePart.clear();
+		if (wholePart[0] == '-') {
 
-		if (number != 0) {
+			number = stoll(wholePart);
+			wholePart.clear();
 
-			while (number < 0) {
+			if (number != 0) {
 
-				wholePart += to_string((number % 8) * -1);
-				number /= 8;
+				while (number < 0) {
+
+					wholePart += to_string((number % 8) * -1);
+					number /= 8;
+				}
+
+				wholePart += '-';
+
+				reverse(wholePart.begin(), wholePart.end());
 			}
+			else {
 
-			wholePart += '-';
-
-			reverse(wholePart.begin(), wholePart.end());
+				wholePart.insert(0, "-0");
+			}
 		}
 		else {
 
-			wholePart.insert(0, "-0");
+			number = stoll(wholePart);
+			wholePart.clear();
+
+			if (number != 0) {
+
+				while (number > 0) {
+
+					wholePart += to_string(number % 8);
+					number /= 8;
+				}
+
+				reverse(wholePart.begin(), wholePart.end());
+			}
+			else {
+
+				wholePart = '0';
+			}
 		}
-	}
-	else {
 
-		number = stoll(wholePart);
-		wholePart.clear();
+		if (fraction.empty() == false) {
 
-		if (number != 0) {
+			fractionNumber = stold(fraction);
+			fraction.clear();
 
-			while (number > 0) {
+			while (fractionNumber != 0 && occurasity > 0) {
+				fractionNumber *= 8;
+				fraction += to_string((int)fractionNumber);
 
-				wholePart += to_string(number % 8);
-				number /= 8;
+				if (fractionNumber > 1) {
+					fractionNumber -= (int)fractionNumber;
+				}
+				occurasity--;
 			}
 
-			reverse(wholePart.begin(), wholePart.end());
+			wholePart = wholePart + '.' + fraction;
 		}
-		else {
 
-			wholePart = '0';
-		}
+		return wholePart;
 	}
+	catch (...) {
 
-	if (fraction.empty() == false) {
-
-		fractionNumber = stold(fraction);
-		fraction.clear();
-
-		while (fractionNumber != 0 && occurasity > 0) {
-			fractionNumber *= 8;
-			fraction += to_string((int)fractionNumber);
-
-			if (fractionNumber > 1) {
-				fractionNumber -= (int)fractionNumber;
-			}
-			occurasity--;
-		}
-
-		wholePart = wholePart + '.' + fraction;
+		wholePart = "Eror";
+		return wholePart;
 	}
-
-	return wholePart;
 }
 
 String intToHex(String value) {
@@ -205,71 +221,79 @@ String intToHex(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		number = stoll(wholePart);
-		wholePart.clear();
+		if (wholePart[0] == '-') {
 
-		if (number != 0) {
+			number = stoll(wholePart);
+			wholePart.clear();
 
-			number *= -1;
+			if (number != 0) {
 
-			while (number > 0) {
+				number *= -1;
 
-				wholePart += hexNumbers[number % 16];
-				number /= 16;
+				while (number > 0) {
+
+					wholePart += hexNumbers[number % 16];
+					number /= 16;
+				}
+
+				wholePart += '-';
+
+				reverse(wholePart.begin(), wholePart.end());
 			}
+			else {
 
-			wholePart += '-';
-
-			reverse(wholePart.begin(), wholePart.end());
+				wholePart.insert(0, "-0");
+			}
 		}
 		else {
 
-			wholePart.insert(0, "-0");
+			number = stoll(wholePart);
+			wholePart.clear();
+
+			if (number != 0) {
+
+				while (number > 0) {
+
+					wholePart += hexNumbers[number % 16];
+					number /= 16;
+				}
+
+				reverse(wholePart.begin(), wholePart.end());
+			}
+			else {
+
+				wholePart = '0';
+			}
 		}
-	}
-	else {
 
-		number = stoll(wholePart);
-		wholePart.clear();
+		if (fraction.empty() == false) {
 
-		if (number != 0) {
+			fractionNumber = stold(fraction);
+			fraction.clear();
 
-			while (number > 0) {
+			while (occurasity > 0) {
 
-				wholePart += hexNumbers[number % 16];
-				number /= 16;
+				fractionNumber *= 16;
+
+				fraction += hexNumbers[(int)fractionNumber];
+
+				fractionNumber -= (int)fractionNumber;
+
+				occurasity--;
 			}
 
-			reverse(wholePart.begin(), wholePart.end());
+			wholePart = wholePart + '.' + fraction;
 		}
-		else {
 
-			wholePart = '0';
-		}
+		return wholePart;
 	}
+	catch (...) {
 
-	if (fraction.empty() == false) {
-
-		fractionNumber = stold(fraction);
-		fraction.clear();
-
-		while (occurasity > 0) {
-			
-			fractionNumber *= 16;
-
-			fraction += hexNumbers[(int)fractionNumber];
-
-			fractionNumber -= (int)fractionNumber;
-
-			occurasity--;
-		}
-
-		wholePart = wholePart + '.' + fraction;
+		wholePart = "Eror";
+		return wholePart;
 	}
-
-	return wholePart;
 }
 
 String binToInt(String value) {
@@ -284,66 +308,74 @@ String binToInt(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		wholePart.erase(0, 1);
-		stringSize = wholePart.size();
+		if (wholePart[0] == '-') {
 
-		reverse(wholePart.begin(), wholePart.end());
+			wholePart.erase(0, 1);
+			stringSize = wholePart.size();
 
-		initialiseVector(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(wholePart.begin(), wholePart.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVector(wholePart, decNumbers, (int)stringSize);
+			wholePart.clear();
 
-			number += (long long int)(decNumbers[i] * pow(2, i));
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(2, i));
+			}
+
+			wholePart += "-";
+			wholePart += to_string(number);
+		}
+		else {
+
+			stringSize = wholePart.size();
+
+			reverse(wholePart.begin(), wholePart.end());
+
+			initialiseVector(wholePart, decNumbers, (int)stringSize);
+			wholePart.clear();
+
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(2, i));
+			}
+
+			wholePart += to_string(number);
+
 		}
 
-		wholePart += "-";
-		wholePart += to_string(number);
-	}
-	else {
+		decNumbers.clear();
 
-		stringSize = wholePart.size();
+		if (fraction.empty() == false) {
 
-		reverse(wholePart.begin(), wholePart.end());
+			fraction.erase(0, 2);
+			stringSize = fraction.size();
 
-		initialiseVector(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(fraction.begin(), fraction.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVector(fraction, decNumbers, (int)stringSize);
+			fraction.clear();
 
-			number += (long long int)(decNumbers[i] * pow(2, i));
+			for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
+
+				fractionNumber += decNumbers[i] * pow(2, j);
+			}
+
+			fraction += to_string(fractionNumber);
+			fraction.erase(0, 1);
+
+			wholePart = wholePart + fraction;
 		}
 
-		wholePart += to_string(number);
-
+		return wholePart;
 	}
+	catch (...) {
 
-	decNumbers.clear();
-
-	if (fraction.empty() == false) {
-
-		fraction.erase(0, 2);
-		stringSize = fraction.size();
-
-		reverse(fraction.begin(), fraction.end());
-
-		initialiseVector(fraction, decNumbers, (int)stringSize);
-		fraction.clear();
-
-		for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
-
-			fractionNumber += decNumbers[i] * pow(2, j);
-		}
-
-		fraction += to_string(fractionNumber);
-		fraction.erase(0, 1);
-
-		wholePart = wholePart + fraction;
+		wholePart = "Eror";
+		return wholePart;
 	}
-
-	return wholePart;
 }
 
 String octToInt(String value) {
