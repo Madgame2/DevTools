@@ -177,6 +177,11 @@ void build_main_page(int page_id) {
         encode_scale_of_nation_reset_button.set_position(720,625);
         encode_scale_of_nation_reset_button.set_size(50,50);
 
+        convertor_BIN.set_symbols_limit(32);
+        convertor_OCT.set_symbols_limit(32);
+        convertor_DEC.set_symbols_limit(32);
+        convertor_HEX.set_symbols_limit(32);
+
         convertor_BIN.clear_all();
         convertor_OCT.clear_all();
         convertor_DEC.clear_all();
@@ -201,6 +206,14 @@ void build_main_page(int page_id) {
         math_sytem_lable_MBYTE.set_font_size(25);
         math_sytem_lable_GBYTE.set_font_size(25);
         math_sytem_lable_TBYTE.set_font_size(25);
+
+        math_sytem_lable_BIT.set_symbols_limit(16);
+        math_sytem_lable_BYTE.set_symbols_limit(16);
+        math_sytem_lable_KBYTE.set_symbols_limit(16);
+        math_sytem_lable_MBYTE.set_symbols_limit(16);
+        math_sytem_lable_GBYTE.set_symbols_limit(16);
+        math_sytem_lable_TBYTE.set_symbols_limit(16);
+
 
         BIT_text.setFillColor(Color(128, 128, 128));
         BYTE_text.setFillColor(Color(128, 128, 128));
@@ -285,6 +298,9 @@ void build_main_page(int page_id) {
         second_lable_arithmetic.setPosition(210,380);
         result_lable_arithmetic.setPosition(710,320);
 
+        first_label_atithm_operations.set_symbols_limit(16);
+        second_label_arithm_operations.set_symbols_limit(16);
+
         first_label_atithm_operations.clear_all();
         second_label_arithm_operations.clear_all();
         result_lable_arithm_operaations.clear_all();
@@ -327,6 +343,8 @@ void build_main_page(int page_id) {
 
         machine_code_RESET_button.set_position(690, 562.5);
         machine_code_RESET_button.set_size(50, 50);
+
+        Dec_code.set_symbols_limit(16);
 
         Dec_code.clear_all();
         Simple_code.clear_all();

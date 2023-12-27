@@ -65,11 +65,18 @@ public:
 					break;
 
 				default:
-
-					full_string.insert(global_position, event.text.unicode);
-					global_position++;
-					right_position++;
-
+					if (symbols_limit != 0) {
+						if (full_string.getSize() < symbols_limit) {
+							full_string.insert(global_position, event.text.unicode);
+							global_position++;
+							right_position++;
+						}
+					}
+					else {
+						full_string.insert(global_position, event.text.unicode);
+						global_position++;
+						right_position++;
+					}
 					break;
 				}
 
@@ -197,6 +204,10 @@ public:
 		text_label.setCharacterSize(size);
 	}
 
+	void set_symbols_limit(int size) {
+		symbols_limit = size;
+	}
+
 private:
 
 	void clear_string()
@@ -255,6 +266,7 @@ private:
 
 	int x, y,postion=0;
 	float WIDTH,height;
+	int symbols_limit = 0;
 
 	Text text_label;
 

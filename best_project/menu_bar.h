@@ -290,7 +290,7 @@ public:
 		buttons[1].get_text()->setString(L"Перевод в различные системы");
 		buttons[2].get_text()->setString(L"Конвертор битов,байтов,килобайтов");
 		buttons[3].get_text()->setString(L"Арифметические операции");
-		buttons[4].get_text()->setString(L"Перевод в машинны код");
+		buttons[4].get_text()->setString(L"Перевод в машинный код");
 		buttons[5].set_text("ChatGPT");
 		
 		for (int i = 0; i < 6; i++)
