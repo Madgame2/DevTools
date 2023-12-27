@@ -566,17 +566,19 @@ void convert_to_machine_code_logic() {
 }
 
 void arithmetic_logic() {
-    if (plus_button.isActive()) {
-        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 1));
-    }
-    else if (minus_button.isActive()) {
-        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 2));
-    }
-    else if (multiplication_button.isActive()) {
-        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 3));
-    }
-    else if (division_button.isActive()) {
-        result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 4));
+    if (first_label_atithm_operations.has_data() && second_label_arithm_operations.has_data()) {
+        if (plus_button.isActive()) {
+            result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 1));
+        }
+        else if (minus_button.isActive()) {
+            result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 2));
+        }
+        else if (multiplication_button.isActive()) {
+            result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 3));
+        }
+        else if (division_button.isActive()) {
+            result_lable_arithm_operaations.set_data(arithmetic_operations(first_label_atithm_operations.get_data(), second_label_arithm_operations.get_data(), 4));
+        }
     }
 }
 
@@ -690,6 +692,7 @@ int main(int argc,char*argv[]) {
                     /*------------------Õ¿∆¿“»≈ Õ¿  ÕŒœ ”  ŒÕ¬≈–“¿÷»»---------------------*/
                     if (encoder_conver_button.is_hover(&main_window)) {
                         encoder_conver_button.set_active();
+                        encoder_exit_lable.clear_all();
                         encoder_exit_lable.set_data(encoder(encoder_enter_lable.get_data(),encoder_radio_button.get_active_button()));
                     } 
                     else
