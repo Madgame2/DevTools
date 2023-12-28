@@ -658,11 +658,11 @@ int main(int argc,char*argv[]) {
                     build_main_page(4);
                     page_id = 4;
                 }
-                if (menu_bar.getButton(5)->is_hover(&main_window)) {
+               /* if (menu_bar.getButton(5)->is_hover(&main_window)) {
                     menu_bar.set_active(5);
                     build_main_page(5);
                     page_id = 5;
-                }
+                }*/
 
                 if (page_id == 0) {
 

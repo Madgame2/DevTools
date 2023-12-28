@@ -181,7 +181,7 @@ public:
 
 		buttons_zone.setFillColor(Color(255, 255, 255));
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			buttons[i].render_button_zone(window);
 
 			if (buttons[i].is_hover(window))
@@ -207,7 +207,7 @@ public:
 			window->draw(buttons_zone);
 			buttons_zone.setFillColor(Color(255, 255, 255));
 		}
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 
 			 if (buttons[i].is_hover(window))
 			{
