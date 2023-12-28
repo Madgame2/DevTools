@@ -77,30 +77,32 @@ String arithmetic_operations(String count_1, String count_2, int operation_id)
 		}
 	}
 
-	float num_1 = stoll(count_1.toAnsiString());
-	float num_2 = stoll(count_2.toAnsiString());
-	float result;
+	if (check) {
+		float num_1 = stoll(count_1.toAnsiString());
+		float num_2 = stoll(count_2.toAnsiString());
+		float result;
 
-	switch (operation_id)
-	{
-	case 1:
-		result = num_1 + num_2;
-		break;
-	case 2:
-		result = num_1 - num_2;
-		break;
-	case 3:
-		result = num_1 * num_2;
-		break;
-	case 4:
-		result = num_1 / num_2;
-		break;
-	default:
-		break;
-	}
+		switch (operation_id)
+		{
+		case 1:
+			result = num_1 + num_2;
+			break;
+		case 2:
+			result = num_1 - num_2;
+			break;
+		case 3:
+			result = num_1 * num_2;
+			break;
+		case 4:
+			result = num_1 / num_2;
+			break;
+		default:
+			break;
+		}
 
-	if (!(result == (long long)result)) {
-		check = false;
+		if (!(result == (long long)result)) {
+			check = false;
+		}
 	}
 
 	if (check) {
@@ -124,6 +126,6 @@ String arithmetic_operations(String count_1, String count_2, int operation_id)
 		}
 	}
 	else {
-		return "Eror";
+		return "Error";
 	}
 }

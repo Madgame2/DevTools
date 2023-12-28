@@ -81,8 +81,8 @@ String convertor_to_machine_code(String data, int operation_id)
 {
 	string num = intToBin(data.toAnsiString()), sigh;
 
-	if (num == "Eror" || num.find('.') != -1 || num.find(',') != -1) {
-		return num = "Eror";
+	if (num == "Error" || num.find('.') != -1 || num.find(',') != -1) {
+		return num = "Error";
 	}
 	else {
 		switch (operation_id) {

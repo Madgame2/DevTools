@@ -93,7 +93,7 @@ String encodeAscii(String data) {
 		codeOfSimbol = simbols[i];
 
 		if ((int)codeOfSimbol > 127 || (int)codeOfSimbol < 0) {
-			result = "Eror";
+			result = "Error";
 			break;
 		}
 
@@ -117,7 +117,7 @@ String encodeWin1251(String data) {
 		codeOfSimbol = simbols[i];
 
 		if ((int)codeOfSimbol > 256) {
-			result = "Eror";
+			result = "Error";
 			break;
 		}
 

@@ -27,16 +27,10 @@
     <ClCompile Include="converter_to_scale_of_nation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="binary_logic.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="arithmetic_operations.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="convertor_to_machine_code.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="checking.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

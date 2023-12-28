@@ -14,7 +14,7 @@ void checkString(string wholePart) {
 		bool is_dot = ((int)wholePart[i] == 46);
 
 		if (!minus && !number&&!is_dot) {
-			throw "eror";
+			throw "error";
 		}
 	}
 }
@@ -44,13 +44,13 @@ void initialiseVector(string wholePart, vector<int>& decNumbers, int size, int o
 
 		case 1:
 			if (wholePart.substr(i, 1) != '0' && wholePart.substr(i, 1) != '1') {
-				throw "eror";
+				throw "error";
 			}
 			break;
 
 		case 2:
 			if (wholePart.substr(i, 1) == '8' || wholePart.substr(i, 1) == '9') {
-				throw "eror";
+				throw "error";
 			}
 			break;
 
@@ -71,7 +71,7 @@ void initialiseVectorHex(string wholePart, vector<int>& decNumbers, int size) {
 		bool is_dot = (int)wholePart[i] == 46;
 		
 		if (!is_number&& !is_letter&& !is_dot) {
-			throw "eror";
+			throw "error";
 		}
 		
 		decNumbers.push_back(hexToIntNumbers[wholePart.substr(i, 1)]);
@@ -165,7 +165,7 @@ String intToBin(String value) {
 	}
 	catch(...){
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }
@@ -253,7 +253,7 @@ String intToOct(String value) {
 	}
 	catch (...) {
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }
@@ -344,7 +344,7 @@ String intToHex(String value) {
 	}
 	catch (...) {
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }
@@ -426,7 +426,7 @@ String binToInt(String value) {
 	}
 	catch (...) {
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }
@@ -508,7 +508,7 @@ String octToInt(String value) {
 	}
 	catch (...) {
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }
@@ -590,7 +590,7 @@ String hexToInt(String value) {
 	}
 	catch (...) {
 
-		wholePart = "Eror";
+		wholePart = "Error";
 		return wholePart;
 	}
 }

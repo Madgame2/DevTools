@@ -145,6 +145,6 @@ String converter_to_mathematical_system(String data, int operation_id, int label
 		}
 	}
 	else {
-		return "Eror";
+		return bitString = "Error";
 	}
 }
