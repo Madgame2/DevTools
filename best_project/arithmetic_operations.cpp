@@ -61,7 +61,7 @@ String arithmetic_operations(String count_1, String count_2, int operation_id)
 
 		symbol = checkingString1[i];
 
-		if ((int)symbol > 40 || (int)symbol < 29) {
+		if (!((int)symbol >= 48 && (int)symbol <= 57)) {
 			check = false;
 			break;
 		}
@@ -71,7 +71,7 @@ String arithmetic_operations(String count_1, String count_2, int operation_id)
 
 		symbol = checkingString2[i];
 
-		if ((int)symbol > 40 || (int)symbol < 29) {
+		if (!((int)symbol >= 48 && (int)symbol <= 57)) {
 			check = false;
 			break;
 		}

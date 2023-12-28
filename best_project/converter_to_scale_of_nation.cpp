@@ -9,8 +9,10 @@ void checkString(string wholePart) {
 
 	for (int i = 0; i < wholePart.length(); i++) {
 
-		if (isdigit(wholePart[i]) == false) {
+		bool minus = ((int)wholePart[i] == 45);
+		bool number = ((int)wholePart[i] >= 48 && (int)wholePart[i] <= 57);
 
+		if (!minus && !number) {
 			throw "eror";
 		}
 	}
