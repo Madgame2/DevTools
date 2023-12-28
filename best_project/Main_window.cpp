@@ -125,10 +125,10 @@ void build_main_page(int page_id) {
            );
 
        encoder_radio_button.set_buttons_size(24, 24);
-       encoder_radio_button.get_button(0)->set_position(390, 235.5);
-       encoder_radio_button.get_button(1)->set_position(500, 235.5);
-       encoder_radio_button.get_button(2)->set_position(595, 235.5);
-       encoder_radio_button.get_button(3)->set_position(685, 235.5);
+       encoder_radio_button.get_button(0)->set_position(385, 240.5);
+       encoder_radio_button.get_button(1)->set_position(485, 240.5);
+       encoder_radio_button.get_button(2)->set_position(577, 240.5);
+       encoder_radio_button.get_button(3)->set_position(669, 240.5);
 
        encoder_radio_button.set_button_active(0);
 
