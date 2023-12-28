@@ -286,10 +286,10 @@ public:
 	}
 
 	void set_button_text_settings(int size, float  off_set) {
-		buttons[0].get_text()->setString(L"Конвертер символов");
+		buttons[0].get_text()->setString(L"Кодирование символов");
 		buttons[1].get_text()->setString(L"Перевод в различные системы");
-		buttons[2].get_text()->setString(L"Конвертор битов,байтов,килобайтов");
-		buttons[3].get_text()->setString(L"Арифметические операции");
+		buttons[2].get_text()->setString(L"Конвертер единиц хранения инф.");
+		buttons[3].get_text()->setString(L"Бинарные арифм. операции");
 		buttons[4].get_text()->setString(L"Перевод в машинный код");
 		buttons[5].set_text("ChatGPT");
 		
