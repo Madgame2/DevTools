@@ -81,52 +81,57 @@ String convertor_to_machine_code(String data, int operation_id)
 {
 	string num = intToBin(data.toAnsiString()), sigh;
 
-	switch (operation_id) {
-	case 1:
-		if (num[0] == '-') {//число отрицательное
-			num.erase(0, 1);
-			InsertZeros(num);
-			return PrintNegativeNumber(sigh, num);
-		}
-		else {
-			InsertZeros(num);
-			return PrintPositiveNumber(sigh, num);
-		}
-		break;
-	case 2:
-		if (num[0] == '-') {//число отрицательное
-			num.erase(0, 1);
-			//вставляем нули
-			InsertZeros(num);
-			//перевод в обратный код
-			ConversionToReverseCode(num);
-			//выводим число
-			return PrintNegativeNumber(sigh, num);
-		}
-		else {//если положительное
-			//вставляем нули
-			InsertZeros(num);
-			//выводим число
-			return PrintPositiveNumber(sigh, num);
-		}
-		break;
-	case 3:
-		if (num[0] == '-') {//если отрицательное число
-			num.erase(0, 1);
-			//вставка нулей
-			InsertZeros(num);
-			//перевод в обратный код
-			ConversionToReverseCode(num);
-			//перевод в дополнительный код 
-			return ConversionToAdditionalCode(num);
+	if (num == "Eror" || num.find('.') != -1 || num.find(',') != -1) {
+		return num = "Eror";
+	}
+	else {
+		switch (operation_id) {
+		case 1:
+			if (num[0] == '-') {//число отрицательное
+				num.erase(0, 1);
+				InsertZeros(num);
+				return PrintNegativeNumber(sigh, num);
+			}
+			else {
+				InsertZeros(num);
+				return PrintPositiveNumber(sigh, num);
+			}
+			break;
+		case 2:
+			if (num[0] == '-') {//число отрицательное
+				num.erase(0, 1);
+				//вставляем нули
+				InsertZeros(num);
+				//перевод в обратный код
+				ConversionToReverseCode(num);
+				//выводим число
+				return PrintNegativeNumber(sigh, num);
+			}
+			else {//если положительное
+				//вставляем нули
+				InsertZeros(num);
+				//выводим число
+				return PrintPositiveNumber(sigh, num);
+			}
+			break;
+		case 3:
+			if (num[0] == '-') {//если отрицательное число
+				num.erase(0, 1);
+				//вставка нулей
+				InsertZeros(num);
+				//перевод в обратный код
+				ConversionToReverseCode(num);
+				//перевод в дополнительный код 
+				return ConversionToAdditionalCode(num);
 
+			}
+			else {//если положительное
+				//вставка нулей
+				InsertZeros(num);
+				//вывод числа
+				return PrintPositiveNumber(sigh, num);
+			}
+			break;
 		}
-		else {//если положительное
-			//вставка нулей
-			InsertZeros(num);
-			//вывод числа
-			return PrintPositiveNumber(sigh, num);
-		}
-		break;
 	}
 }

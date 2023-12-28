@@ -5,6 +5,17 @@
 
 using namespace std;
 
+void checkString(string wholePart) {
+
+	for (int i = 0; i < wholePart.length(); i++) {
+
+		if (isdigit(wholePart[i]) == false) {
+
+			throw "eror";
+		}
+	}
+}
+
 void findPos(string &wholePart, string& fraction, size_t& dotPosition) {
 	  
 	dotPosition = wholePart.find('.');
@@ -20,16 +31,44 @@ void findPos(string &wholePart, string& fraction, size_t& dotPosition) {
 	}
 }
 
-void initialiseVector(string wholePart, vector<int>& decNumbers, int size) {
+void initialiseVector(string wholePart, vector<int>& decNumbers, int size, int operation_id) {
 
 	for (int i = 0; i < size; i++) {
 		decNumbers.push_back((stoi(wholePart.substr(i, 1))));
+
+		switch (operation_id)
+		{
+
+		case 1:
+			if (wholePart.substr(i, 1) != '0' && wholePart.substr(i, 1) != '1') {
+				throw "eror";
+			}
+			break;
+
+		case 2:
+			if (wholePart.substr(i, 1) == '8' || wholePart.substr(i, 1) == '9') {
+				throw "eror";
+			}
+			break;
+
+		default:
+			break; 
+		}
 	}
 }
 
 void initialiseVectorHex(string wholePart, vector<int>& decNumbers, int size) {
 
 	for (int i = 0; i < size; i++) {
+
+		wholePart[i] = static_cast<char>(toupper(wholePart[i]));
+
+		for (const auto& element: hexToIntNumbers) {
+
+			if (wholePart[i] != element.first) {
+				throw "eror";
+			}
+		}
 		decNumbers.push_back(hexToIntNumbers[wholePart.substr(i, 1)]);
 	}
 }
@@ -51,6 +90,7 @@ String intToBin(String value) {
 
 		if (wholePart[0] == '-') {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -74,6 +114,7 @@ String intToBin(String value) {
 		}
 		else {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -95,6 +136,7 @@ String intToBin(String value) {
 
 		if (fraction.empty() == false) {
 
+			checkString(fraction);
 			fractionNumber = stold(fraction);
 			fraction.clear();
 
@@ -140,6 +182,7 @@ String intToOct(String value) {
 
 		if (wholePart[0] == '-') {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -162,6 +205,7 @@ String intToOct(String value) {
 		}
 		else {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -183,6 +227,7 @@ String intToOct(String value) {
 
 		if (fraction.empty() == false) {
 
+			checkString(fraction);
 			fractionNumber = stold(fraction);
 			fraction.clear();
 
@@ -225,6 +270,7 @@ String intToHex(String value) {
 
 		if (wholePart[0] == '-') {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -249,6 +295,7 @@ String intToHex(String value) {
 		}
 		else {
 
+			checkString(wholePart);
 			number = stoll(wholePart);
 			wholePart.clear();
 
@@ -270,6 +317,7 @@ String intToHex(String value) {
 
 		if (fraction.empty() == false) {
 
+			checkString(fraction);
 			fractionNumber = stold(fraction);
 			fraction.clear();
 
@@ -317,7 +365,7 @@ String binToInt(String value) {
 
 			reverse(wholePart.begin(), wholePart.end());
 
-			initialiseVector(wholePart, decNumbers, (int)stringSize);
+			initialiseVector(wholePart, decNumbers, (int)stringSize, 1);
 			wholePart.clear();
 
 			for (int i = (int)stringSize - 1; i >= 0; i--) {
@@ -334,7 +382,7 @@ String binToInt(String value) {
 
 			reverse(wholePart.begin(), wholePart.end());
 
-			initialiseVector(wholePart, decNumbers, (int)stringSize);
+			initialiseVector(wholePart, decNumbers, (int)stringSize, 1);
 			wholePart.clear();
 
 			for (int i = (int)stringSize - 1; i >= 0; i--) {
@@ -355,7 +403,7 @@ String binToInt(String value) {
 
 			reverse(fraction.begin(), fraction.end());
 
-			initialiseVector(fraction, decNumbers, (int)stringSize);
+			initialiseVector(fraction, decNumbers, (int)stringSize, 1);
 			fraction.clear();
 
 			for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
@@ -390,66 +438,74 @@ String octToInt(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		wholePart.erase(0, 1);
-		stringSize = wholePart.size();
+		if (wholePart[0] == '-') {
 
-		reverse(wholePart.begin(), wholePart.end());
+			wholePart.erase(0, 1);
+			stringSize = wholePart.size();
 
-		initialiseVector(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(wholePart.begin(), wholePart.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVector(wholePart, decNumbers, (int)stringSize, 2);
+			wholePart.clear();
 
-			number += (long long int)(decNumbers[i] * pow(8, i));
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(8, i));
+			}
+
+			wholePart += "-";
+			wholePart += to_string(number);
+		}
+		else {
+
+			stringSize = wholePart.size();
+
+			reverse(wholePart.begin(), wholePart.end());
+
+			initialiseVector(wholePart, decNumbers, (int)stringSize, 2);
+			wholePart.clear();
+
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(8, i));
+			}
+
+			wholePart += to_string(number);
+
 		}
 
-		wholePart += "-";
-		wholePart += to_string(number);
-	}
-	else {
+		decNumbers.clear();
 
-		stringSize = wholePart.size();
+		if (fraction.empty() == false) {
 
-		reverse(wholePart.begin(), wholePart.end());
+			fraction.erase(0, 2);
+			stringSize = fraction.size();
 
-		initialiseVector(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(fraction.begin(), fraction.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVector(fraction, decNumbers, (int)stringSize, 2);
+			fraction.clear();
 
-			number += (long long int)(decNumbers[i] * pow(8, i));
+			for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
+
+				fractionNumber += decNumbers[i] * pow(8, j);
+			}
+
+			fraction += to_string(fractionNumber);
+			fraction.erase(0, 1);
+
+			wholePart = wholePart + fraction;
 		}
 
-		wholePart += to_string(number);
-
+		return wholePart;
 	}
+	catch (...) {
 
-	decNumbers.clear();
-
-	if (fraction.empty() == false) {
-
-		fraction.erase(0, 2);
-		stringSize = fraction.size();
-
-		reverse(fraction.begin(), fraction.end());
-
-		initialiseVector(fraction, decNumbers, (int)stringSize);
-		fraction.clear();
-
-		for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
-
-			fractionNumber += decNumbers[i] * pow(8, j);
-		}
-
-		fraction += to_string(fractionNumber);
-		fraction.erase(0, 1);
-
-		wholePart = wholePart + fraction;
+		wholePart = "Eror";
+		return wholePart;
 	}
-
-	return wholePart;
 }
 
 String hexToInt(String value) {
@@ -464,66 +520,74 @@ String hexToInt(String value) {
 
 	findPos(wholePart, fraction, dotPosition);
 
-	if (wholePart[0] == '-') {
+	try {
 
-		wholePart.erase(0, 1);
-		stringSize = wholePart.size();
+		if (wholePart[0] == '-') {
 
-		reverse(wholePart.begin(), wholePart.end());
+			wholePart.erase(0, 1);
+			stringSize = wholePart.size();
 
-		initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(wholePart.begin(), wholePart.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
+			wholePart.clear();
 
-			number += (long long int)(decNumbers[i] * pow(16, i));
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(16, i));
+			}
+
+			wholePart += "-";
+			wholePart += to_string(number);
+		}
+		else {
+
+			stringSize = wholePart.size();
+
+			reverse(wholePart.begin(), wholePart.end());
+
+			initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
+			wholePart.clear();
+
+			for (int i = (int)stringSize - 1; i >= 0; i--) {
+
+				number += (long long int)(decNumbers[i] * pow(16, i));
+			}
+
+			wholePart += to_string(number);
+
 		}
 
-		wholePart += "-";
-		wholePart += to_string(number);
-	}
-	else {
+		decNumbers.clear();
 
-		stringSize = wholePart.size();
+		if (fraction.empty() == false) {
 
-		reverse(wholePart.begin(), wholePart.end());
+			fraction.erase(0, 2);
+			stringSize = fraction.size();
 
-		initialiseVectorHex(wholePart, decNumbers, (int)stringSize);
-		wholePart.clear();
+			reverse(fraction.begin(), fraction.end());
 
-		for (int i = (int)stringSize - 1; i >= 0; i--) {
+			initialiseVectorHex(fraction, decNumbers, (int)stringSize);
+			fraction.clear();
 
-			number += (long long int)(decNumbers[i] * pow(16, i));
+			for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
+
+				fractionNumber += decNumbers[i] * pow(16, j);
+			}
+
+			fraction += to_string(fractionNumber);
+			fraction.erase(0, 1);
+
+			wholePart = wholePart + fraction;
 		}
 
-		wholePart += to_string(number);
-
+		return wholePart;
 	}
+	catch (...) {
 
-	decNumbers.clear();
-
-	if (fraction.empty() == false) {
-
-		fraction.erase(0, 2);
-		stringSize = fraction.size();
-
-		reverse(fraction.begin(), fraction.end());
-
-		initialiseVectorHex(fraction, decNumbers, (int)stringSize);
-		fraction.clear();
-
-		for (int i = (int)stringSize - 1, j = -1; i >= 0; i--, j--) {
-
-			fractionNumber += decNumbers[i] * pow(16, j);
-		}
-
-		fraction += to_string(fractionNumber);
-		fraction.erase(0, 1);
-
-		wholePart = wholePart + fraction;
+		wholePart = "Eror";
+		return wholePart;
 	}
-
-	return wholePart;
 }
 
 
