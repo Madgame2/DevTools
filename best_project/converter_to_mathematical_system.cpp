@@ -88,7 +88,7 @@ String converter_to_mathematical_system(String data, int operation_id, int label
 
 		symbol = bitString[i];
 
-		if (!((int)symbol >= 48 && (int)symbol <= 57)) {
+		if (!((int)symbol >= 48 && (int)symbol <= 57)&& !((int)symbol==46)) {
 			check = false;
 			break;
 		}

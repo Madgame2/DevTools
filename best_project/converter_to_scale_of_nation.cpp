@@ -11,8 +11,9 @@ void checkString(string wholePart) {
 
 		bool minus = ((int)wholePart[i] == 45);
 		bool number = ((int)wholePart[i] >= 48 && (int)wholePart[i] <= 57);
+		bool is_dot = ((int)wholePart[i] == 46);
 
-		if (!minus && !number) {
+		if (!minus && !number&&!is_dot) {
 			throw "eror";
 		}
 	}
@@ -65,12 +66,14 @@ void initialiseVectorHex(string wholePart, vector<int>& decNumbers, int size) {
 
 		wholePart[i] = static_cast<char>(toupper(wholePart[i]));
 
-		for (const auto& element: hexToIntNumbers) {
-
-			if (wholePart[i] != element.first) {
-				throw "eror";
-			}
+		bool is_number = ((int)wholePart[i] >= 48 && (int)wholePart[i] <= 57);
+		bool is_letter = ((int)wholePart[i] >= 65 && (int)wholePart[i] <= 70);
+		bool is_dot = (int)wholePart[i] == 46;
+		
+		if (!is_number&& !is_letter&& !is_dot) {
+			throw "eror";
 		}
+		
 		decNumbers.push_back(hexToIntNumbers[wholePart.substr(i, 1)]);
 	}
 }
