@@ -75,7 +75,7 @@ textLabel extra_code  (660, 440, 300, 60, "");
 
 Text dec_text(L"Десятичный",font,30);
 Text simple_text(L"Прямой код", font, 30);
-Text reverse_text(L"Обрантый код", font, 30);
+Text reverse_text(L"Обратный код", font, 30);
 Text extra_text(L"Доп. код", font, 30);
 
 Button copy_button_dec("img\\copy.png", "img\\copyActive.png");
